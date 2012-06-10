@@ -5,7 +5,7 @@
 (cond
   (( is-freebsd)  
    (define (install tynnyri)
-     (with-clang)
+     ; (with-clang)
      (with-usr-local)
      (system
        '(autoconf)

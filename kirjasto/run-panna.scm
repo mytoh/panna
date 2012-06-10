@@ -34,7 +34,6 @@
 (use util.match)
 (use file.util)
 
-(use panna)
 
 (define (usage status)
   (exit status "usage: ~a <command> <package-name>\n" *program-name*))
@@ -50,14 +49,14 @@
                     #f))
            (panna (lambda (c)
                     (cond ( kaava  
-                      (run-process `(nice -n 5 gosh ,(build-path (sys-getenv "OLUTPANIMO")
-                                                       (string-append "kirjasto/panna/komento/" c ".scm"))
-                                          ,@kaava)
-                                   :wait #t)) 
+                            (run-process `(gosh ,(build-path (sys-getenv "OLUTPANIMO")
+                                                             (string-append "kirjasto/panna/komento/" c ".scm"))
+                                                ,@kaava)
+                                         :wait #t)) 
                       (else
-                      (run-process `(nice -n 5 gosh ,(build-path (sys-getenv "OLUTPANIMO")
-                                                       (string-append "kirjasto/panna/komento/" c ".scm")))
-                                   :wait #t))))))
+                        (run-process `(gosh ,(build-path (sys-getenv "OLUTPANIMO")
+                                                         (string-append "kirjasto/panna/komento/" c ".scm")))
+                                     :wait #t))))))
       (match (car rest)
         ; command aliases
         ("up"
