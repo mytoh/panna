@@ -62,13 +62,13 @@
         ("up"
          (panna "update"))
         ("ln"
-         (pannaa "link"))
+         (panna "link"))
         ("ls"
          (panna "list"))
         ("home"
          (panna "homepage"))
-        ((or "rm" "remove")
-         (panna "install"))
+        ; ((or "rm" "remove")
+        ;  (panna "install"))
         ("abv"
          (panna "info"))
         ("env"
