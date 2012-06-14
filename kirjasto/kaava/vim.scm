@@ -5,10 +5,9 @@
 (define (install tynnyri)
   (with-clang)
   (system
-  '(gmake clean)
-  '(gmake distclean)
   `(./configure   ,(string-append
                      "--prefix=" tynnyri)
+                  "--cache-file=/dev/null"
                   "--with-features=huge"
                   "--enable-multibyte"
                   "--enable-perlinterp"
@@ -22,5 +21,7 @@
                   "--with-features=huge")
   '(gmake)
   '(gmake install)
+  '(gmake clean)
+  '(gmake distclean)
   ))
 
