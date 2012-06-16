@@ -8,14 +8,16 @@
 
 (define install
   (lambda ()
-    (print "making panna directory")
+    (print "creating panna directory")
     (make-directory*
       *panna-directory*)
-    (print "coping library directory")
+    (print "copying library directory")
     (copy-directory*
       "kirjasto"
       (build-path *panna-directory*
-                  "kirjasto"))))
+                  "kirjasto"))
+    (print "creating bin/ directory")
+    ))
 
 (define (main args)
 (cond
