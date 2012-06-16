@@ -23,7 +23,7 @@
        (let  ((riisi (build-path (sys-getenv "OLUTPANIMO")
                                  "riisi" (car pullo ))))
          (current-directory riisi)
-         (display (colour-string 155 ">>> "))
+         (display (colour-string 155 ":: "))
          (display "updating ")
          (display (colour-string 99 (last (string-split (current-directory) "/"))))
          (newline)
@@ -40,18 +40,16 @@
                    '(svn update)))
                 ((cvs)
                  (commands
-                   '(cvs update)))
-                )))
+                   '(cvs update))))))
 
       ; update all repositories
       (else
         (let* ((riisi-kansio (build-path (sys-getenv "OLUTPANIMO")
                                          "riisi"))
-               (repos  (directory-list riisi-kansio :children? #t :add-path? #t))
-               )
+               (repos  (directory-list riisi-kansio :children? #t :add-path? #t)))
           (for-each (lambda (repo)
                       (current-directory repo)
-                      (display (colour-string 155 ">>> "))
+                      (display (colour-string 155 ":: "))
                       (display "updating ")
                       (display (colour-string 100 (last (string-split repo "/"))))
                       (newline)
@@ -68,15 +66,12 @@
                                 '(svn update)))
                              ((cvs)
                               (commands
-                                '(cvs update)))
-                             ))
+                                '(cvs update)))))
                     repos))))))
 
 
 (define (main args)
   (if (<= 2 (length args))
     (update (cadr args))
-    (update )
-    )
-  )
+    (update )))
 

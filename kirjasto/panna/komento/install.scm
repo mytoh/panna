@@ -11,7 +11,7 @@
     (current-directory (panna-kansio))
 
     (newline)
-    (display (string-append "[38;5;38m" ">>> " "[0m"))
+    (display (string-append "[38;5;38m" ":: " "[0m"))
     (print "symlinking files")
     (newline)
     (letrec ((relative-path
@@ -72,7 +72,7 @@
                               :pred file-is-readable?))
 
     (current-directory riisi)
-    (display (colour-string 38 ">>> "))
+    (display (colour-string 38 ":: "))
     (display pullo)
     (newline)
     (install tynnyri)
@@ -82,7 +82,7 @@
 (define (main args)
   (when (>=  (length (cdr  args)) 2)
     (begin
-      (display (colour-string 163 ">>>"))
+      (display (colour-string 163 "::"))
       (display " installing these packages" )
       (newline)
       (for-each (lambda (x)  (display (string-append x " " ))) (cdr args))
