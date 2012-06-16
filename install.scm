@@ -4,11 +4,6 @@
   (build-path (home-directory)
               ".panna"))
 
-(cond
-  ( (file-exists? (build-path (home-directory) ".panna"))  
-   (print "please remove ~/.panna directory"))
-  (else
-    (install)))
 
 
 (define install
@@ -20,3 +15,10 @@
     (copy-directory*
       "kirjasto"
       *panna-directory*)))
+
+(define (main args)
+(cond
+  ( (file-exists? (build-path (home-directory) ".panna"))  
+   (print "please remove ~/.panna directory"))
+  (else
+    (install)))) 
