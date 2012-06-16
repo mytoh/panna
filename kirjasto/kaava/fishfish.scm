@@ -4,21 +4,24 @@
 
 (cond
   (( is-freebsd)  
-   (define (install tynnyri)
-     ; (with-clang)
+   (define (install prefix)
+     (with-clang)
+     (add-environment-variable
+       "LIBS" "-liconv") 
      (with-usr-local)
      (system
+       '(gmake clean)
        '(autoconf)
-       `(./configure ,(string-append "--prefix=" tynnyri) )
+       `(./configure ,(string-append "--prefix=" prefix) )
        '(gmake)
        '(gmake install)
        '(gmake clean)
        )))
   (else
-    (define (install tynnyri)
+    (define (install prefix)
       (system
         '(make distclean clean)
-        `(./configure ,(string-append "--prefix=" tynnyri) --without-xsel)
+        `(./configure ,(string-append "--prefix=" prefix) --without-xsel)
         '(make)
         '(make install)))))
 
