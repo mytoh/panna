@@ -1,3 +1,7 @@
+panna
+=====
+
+gauche extension manager
 
 Install
 -------
