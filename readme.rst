@@ -1,7 +1,7 @@
 panna
 =====
 
-gauche extension manager
+software package manager
 
 Install
 -------
