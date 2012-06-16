@@ -17,7 +17,15 @@
       (build-path *panna-directory*
                   "kirjasto"))
     (print "creating bin/ directory")
-    ))
+    (make-directory*
+      (build-path *panna-directory*
+                  "bin"))
+    (print "linking run script")
+    (sys-symlink
+      (build-path *panna-directory*
+                  "kirjasto/run-panna.scm")
+      (build-path *panna-directory*
+                  "bin/panna"))))
 
 (define (main args)
 (cond
