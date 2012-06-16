@@ -25,7 +25,12 @@
       (build-path *panna-directory*
                   "kirjasto/run-panna.scm")
       (build-path *panna-directory*
-                  "bin/panna"))))
+                  "bin/panna"))
+    (print "change run script to executable")
+    (sys-chmod
+      (build-path *panna-directory*
+                  "kirjasto/run-panna.scm")
+      764)))
 
 (define (main args)
 (cond
