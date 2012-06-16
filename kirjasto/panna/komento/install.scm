@@ -40,8 +40,7 @@
                  (lambda (path seed)
                    (cons (list
                            (relative-path
-                             path
-                             )
+                             path)
                            (simplify-path (string-append "."
                                                          (string-scan path
                                                                       (tynnyri-kansio)
