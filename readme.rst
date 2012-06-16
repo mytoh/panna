@@ -13,7 +13,7 @@ setting up paths
 ::
   export OLUTPANIMO="$HOME/.panna"
   export GAUCHE_LOAD_PATH=$OLUTPANIMO/kirjasto:$GAUCHE_LOAD_PATH
-  export PATH=$OLUTPANIMO:$PATH
+  export PATH=$OLUTPANIMO/bin:$PATH
 
 
 
