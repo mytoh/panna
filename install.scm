@@ -30,7 +30,7 @@
     (sys-chmod
       (build-path *panna-directory*
                   "kirjasto/run-panna.scm")
-      764)))
+      774)))
 
 (define (main args)
 (cond
