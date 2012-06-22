@@ -20,6 +20,14 @@ setting up paths
   export GAUCHE_LOAD_PATH=$OLUTPANIMO/kirjasto:$GAUCHE_LOAD_PATH
   export PATH=$OLUTPANIMO/bin:$PATH
 
+Panna
+--------
+
+see $OLUTPANIMO/kirjasto/kaava and
+install packages
+;;
+  panna install vim
+
 
 
 
