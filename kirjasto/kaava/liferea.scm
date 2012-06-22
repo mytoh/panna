@@ -2,6 +2,7 @@
 (use panna.kaava)
 
 (define kaava   "liferea")
+(define repository   "git://liferea.git.sourceforge.net/gitroot/liferea/liferea")
 
 (define (install tynnyri)
   (with-clang)

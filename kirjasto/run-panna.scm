@@ -48,7 +48,7 @@
                     (cdr rest)
                     #f))
            (panna (lambda (c)
-                    (cond ( kaava  
+                    (cond ( kaava
                             (run-process `(gosh ,(build-path (sys-getenv "OLUTPANIMO")
                                                              (string-append "kirjasto/panna/komento/" c ".scm"))
                                                 ,@kaava)

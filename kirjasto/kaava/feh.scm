@@ -3,6 +3,7 @@
 
 (define kaava   "feh")
 (define homepage "dummy")
+(define repository   "git://derf.homelinux.org/feh" )
 
 (cond
   ; freebsd

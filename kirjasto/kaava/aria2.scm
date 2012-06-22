@@ -4,7 +4,7 @@
 
 (define kaava   "aria2")
 (define homepage "http://aria2.sourceforge.net/")
-(define url      "git://github.com/tatsuhiro-t/aria2")
+(define repository      "git://github.com/tatsuhiro-t/aria2")
 
 (cond
   ; freebsd

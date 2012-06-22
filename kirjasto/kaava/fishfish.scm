@@ -1,6 +1,7 @@
 (use panna.kaava)
 
 (define kaava  "fishfish")
+(define repository   "git://gitorious.org/~ridiculousfish/fish-shell/fishfish.git")
 
 (cond
   (( is-freebsd)  
@@ -10,7 +11,6 @@
        "LIBS" "-liconv") 
      (with-usr-local)
      (system
-       '(gmake clean)
        '(autoconf)
        `(./configure ,(string-append "--prefix=" prefix) )
        '(gmake)

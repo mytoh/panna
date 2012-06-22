@@ -2,6 +2,7 @@
 (use panna.kaava)
 
 (define kaava          (make-parameter "gauche"))
+(define repostory    "git://gauche.git.sourceforge.net/gitroot/gauche/Gauche" )
 
 (define (install tynnyri)
   (with-clang)

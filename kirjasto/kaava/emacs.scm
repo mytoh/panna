@@ -7,7 +7,6 @@
 (define repository "git://git.savannah.gnu.org/emacs.git")
 
 (define (install tynnyri)
-  (with-clang)
   (system
     '(gmake clean)
     '(gmake distclean)

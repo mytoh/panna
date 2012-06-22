@@ -9,8 +9,8 @@
     load-build-file
     colour-string
     commands
-    )
-  )
+    url-is-git?
+    ))
 (select-module panna.työkalu)
 
 
@@ -24,8 +24,7 @@
   ; find, load kaava file
   (load (find-file-in-paths (string-append pullo ".scm")
                             :paths `(,kaava-kansio)
-                            :pred file-is-readable?)
-        ))
+                            :pred file-is-readable?)))
 
 (define-syntax commands
   ; run processes
@@ -39,3 +38,8 @@
   ;; take any -> return string
   (tree->string `("[38;5;" ,(x->string colour-number) "m" ,(x->string str) "[0m")))
 (provide "panna.työkalu")
+
+(define (url-is-git? url)
+  (cond ((rxmatch->string #/^git:\/\// url) #t)
+        ((rxmatch->string #/\.git$/ url) #t)
+        (else #f)))

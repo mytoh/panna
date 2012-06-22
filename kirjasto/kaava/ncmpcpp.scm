@@ -1,6 +1,7 @@
 (use panna.kaava)
 
 (define kaava  "ncmpcpp")
+(define repository  "git://repo.or.cz/ncmpcpp.git" )
 
 
 (define (install tynnyri)
