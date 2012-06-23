@@ -24,6 +24,7 @@ Panna
 --------
 
 see $OLUTPANIMO/kirjasto/kaava and
+
 install packages
 ::
   panna install vim

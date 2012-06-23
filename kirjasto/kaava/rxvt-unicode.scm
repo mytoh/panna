@@ -3,7 +3,7 @@
 (use panna.kaava)
 
 (define kaava "rxvt-unicode")
-
+(define repository "cvs.schmorp.de/schmorpforge")
 
 (define (install tynnyri)
   (with-usr-local)

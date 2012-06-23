@@ -1,6 +1,7 @@
 (use panna.kaava)
 
 (define kaava  "vim")
+(define repository "https://vim.googlecode.com/hg/")
 
 (define (install tynnyri)
   (with-clang)

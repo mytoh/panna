@@ -1,6 +1,7 @@
 (use gauche.parameter)
 (use gauche.process)
 (use file.util)
+(use rfc.uri)
 (use panna)
 
 
@@ -62,18 +63,43 @@
                          (cadr p)))))
        file-list))))
 
-(define (fetch repository-url)
+(define (fetch repository-url pullo)
   (let* ((panna (resolve-path (sys-getenv "OLUTPANIMO")))
-         (riisi (build-path panna "riisi")))
+         (riisi (build-path panna "riisi"))
+         (command-message
+           (lambda () 
+             (display ( colour-string 38 ":: "))
+             (display ( colour-string 229 "fetching repository"))
+             (newline))))
     (cond
      ((url-is-git? repository-url)
-      (current-directory riisi)
-      (display (colour-string 38 ":: "))
-      (display "fetching repository")
-      (newline)
-      (run-process `(git clone ,repository-url) :wait #t))
+      (command-message)
+      (run-process `(git clone ,repository-url ,pullo) :wait #t
+                   :directory riisi))
+     ((url-is-hg? repository-url)
+      (command-message)
+      (run-process `(hg clone ,repository-url ,pullo) :wait #t
+                   :directory riisi))
+     ((url-is-bzr? repository-url)
+      (command-message)
+      (run-process `(hg clone ,repository-url ,pullo) :wait #t
+                   :directory riisi))
+     ((url-is-svn? repository-url)
+      (command-message)
+      (run-process `(hg clone ,repository-url ,pullo) :wait #t
+                   :directory riisi))
+     ((url-is-cvs? repository-url)
+      (command-message)
+      (run-process `(hg clone ,repository-url ,pullo) :wait #t
+                   :directory riisi))
+     ((url-is-fossil? repository-url)
+      (command-message)
+      (receive (#f #f scheme #f url #f #f)
+        (uri-parse repository-url)
+        (run-process `(fossil clone ,(string-append scheme ":" url) ,pullo) :wait #t
+                   :directory riisi)))
      (else
- (print "this repository url is not supported")))))
+      (print "this repository url is not supported")))))
 
 (define (install-package pullo)
   (let* ((panna   (resolve-path (sys-getenv "OLUTPANIMO")))
@@ -83,21 +109,14 @@
     (load (find-file-in-paths (string-append pullo ".scm")
                               :paths `(,kaava-kansio)
                               :pred file-is-readable?))
-    (cond ((file-is-directory? riisi)
-           (current-directory riisi)
-           (display (colour-string 38 ":: "))
-           (display pullo)
-           (newline)
-           (install tynnyri)
-           (link pullo))
-          (else
-           (fetch repository)
-           (current-directory riisi)
-           (display (colour-string 38 ":: "))
-           (display pullo)
-           (newline)
-           (install tynnyri)
-           (link pullo)))))
+    (unless (file-is-directory? riisi)
+      (fetch repository pullo))
+    (current-directory riisi)
+    (display (colour-string 38 ":: "))
+    (display (string-append (colour-string 229 "installing " ) pullo))
+    (newline)
+    (install tynnyri)
+    (link pullo)))
 
 
 (define (main args)
