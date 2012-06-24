@@ -3,19 +3,20 @@
 
 (define kaava   "mosh")
 (define homepage "http://mosh.mit.edu/")
-(define repository   "git://github.com/keithw/mosh" )
+(define repository   "git://github.com/higepon/mosh" )
 
 (cond
   ; freebsd
   ((is-freebsd)
    (define (install prefix)
      (with-clang)
+     (with-usr-local)
      (system
-      '(./autogen.sh)
+      '(./gen-git-build.sh)
        `(./configure ,(string-append "--prefix=" prefix) )
-       '(make)
-       '(make install)
-       )))
+       '(gmake)
+       '(gmake check)
+       '(gmake install))))
 
   (else
     (define (install tynnyri)
@@ -24,6 +25,5 @@
       (system
         '(make clean)
         '(make)
-        '(make install)))
-    ))
+        '(make install)))))
 

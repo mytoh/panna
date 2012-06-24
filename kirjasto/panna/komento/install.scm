@@ -1,5 +1,6 @@
 (use gauche.parameter)
 (use gauche.process)
+(use gauche.sequence)
 (use file.util)
 (use rfc.uri)
 (use panna)
@@ -67,7 +68,7 @@
   (let* ((panna (resolve-path (sys-getenv "OLUTPANIMO")))
          (riisi (build-path panna "riisi"))
          (command-message
-           (lambda () 
+           (lambda ()
              (display ( colour-string 38 ":: "))
              (display ( colour-string 229 "fetching repository"))
              (newline))))
@@ -82,11 +83,11 @@
                    :directory riisi))
      ((url-is-bzr? repository-url)
       (command-message)
-      (run-process `(hg clone ,repository-url ,pullo) :wait #t
+      (run-process `(bzr branch ,(subseq repository-url 6) ,pullo) :wait #t
                    :directory riisi))
      ((url-is-svn? repository-url)
       (command-message)
-      (run-process `(hg clone ,repository-url ,pullo) :wait #t
+      (run-process `(svn clone ,repository-url ,pullo) :wait #t
                    :directory riisi))
      ((url-is-cvs? repository-url)
       (command-message)

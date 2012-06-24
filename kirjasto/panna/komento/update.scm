@@ -16,6 +16,8 @@
                 'svn)
                ((file-exists? (build-path dir "CVS"))
                 'cvs)
+               ((file-exists? (build-path dir ".bzr"))
+                'bzr)
                ))))
     (cond
       ((not (null-list? pullo))
@@ -38,6 +40,9 @@
                 ((svn)
                  (commands
                    '(svn update)))
+                ((bzr)
+                 (commands
+                   '(bzr merge)))
                 ((cvs)
                  (commands
                    '(cvs update))))))
@@ -66,7 +71,10 @@
                                 '(svn update)))
                              ((cvs)
                               (commands
-                                '(cvs update)))))
+                                '(cvs update)))
+                             ((bzr)
+                              (commands
+                                '(bzr update)))))
                     repos))))))
 
 
