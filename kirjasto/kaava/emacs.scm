@@ -11,7 +11,7 @@
     '(gmake clean)
     '(gmake distclean)
     '("./autogen.sh")
-    `("./configure" ,(string-append "--prefix=" tynnyri))
+    `("./configure" "-with-x-toolkit=gtk3" "-with-wide-int" ,(string-append "--prefix=" tynnyri))
     '(gmake)
     '(gmake install)
     ))

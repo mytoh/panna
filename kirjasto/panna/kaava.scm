@@ -1,8 +1,8 @@
 
 (define-module panna.kaava
+  (extend file.util)
   (use gauche.parameter)
   (use gauche.process)
-  (use file.util)
   (require-extension
     (srfi 13))
   (export

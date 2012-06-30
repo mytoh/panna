@@ -25,8 +25,7 @@
     (directory-fold (tynnyri) cons '()
                     :lister (lambda (path seed)
                               (values (directory-list path :add-path? #t :children? #t)
-                                      (cons path seed))))) 
-    ))
+                                      (cons path seed)))))))
 
 (define (main args)
   (if (<= 2 (length args))

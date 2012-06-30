@@ -20,58 +20,57 @@
     (letrec ((relative-path
               (lambda (p)
                 (fold
-                 (lambda (e str)
-                   (string-append "../" str))
-                 (simplify-path
-                  (string-append
-                      "."
-                    (string-scan p
-                                 (panna-kansio)
-                                 'after)))
-                 (string-split
-                  (sys-dirname
-                   (simplify-path
-                    (string-append
-                        "."
-                      (string-scan p
-                                   (tynnyri-kansio)
-                                   'after))))
-                  #/\//))))
+                    (lambda (e str)
+                      (string-append "../" str))
+                  (simplify-path
+                      (string-append
+                          "."
+                        (string-scan p
+                          (panna-kansio)
+                          'after)))
+                  (string-split
+                      (sys-dirname
+                          (simplify-path
+                              (string-append
+                                  "."
+                                (string-scan p
+                                  (tynnyri-kansio)
+                                  'after))))
+                    #/\//))))
              (file-list
               (directory-fold
-               (tynnyri-kansio)
-               (lambda (path seed)
-                 (cons (list
-                        (relative-path
-                         path)
-                        (simplify-path (string-append "."
-                                         (string-scan path
-                                                      (tynnyri-kansio)
-                                                      'after))))
-                       seed))
-               '())))
+                  (tynnyri-kansio)
+                (lambda (path seed)
+                  (cons (list
+                            (relative-path path)
+                          (simplify-path (string-append "."
+                                           (string-scan path
+                                             (tynnyri-kansio)
+                                             'after))))
+                    seed))
+                '())))
       (for-each
        (^p
-        (unless (file-exists? (sys-dirname (cadr p)))
-          (make-directory* (sys-dirname (cadr p))))
-        (unless  (file-exists? (cadr p))
-          (begin
-            (print (string-append
-                       "linking file "
-                     (colour-string 163
-                                    (cadr  p))))
-            (sys-symlink (car p)
-                         (cadr p)))))
+           (unless (file-exists? (sys-dirname (cadr p)))
+             (make-directory* (sys-dirname (cadr p))))
+         (unless  (file-exists? (cadr p))
+           (begin
+             (print (string-append
+                        "linking file "
+                      (colour-string 163
+                        (cadr  p))))
+             (sys-symlink (car p)
+               (cadr p)))))
        file-list))))
 
 (define (fetch repository-url pullo)
   (let* ((panna (resolve-path (sys-getenv "OLUTPANIMO")))
          (riisi (build-path panna "riisi"))
          (command-message
-           (lambda ()
-             (display ( colour-string 38 ":: "))
-             (display ( colour-string 229 "fetching repository"))
-             (newline))))
+          (lambda ()
+            (display ( colour-string 38 ":: "))
+            (display ( colour-string 229 "fetching repository"))
+            (newline))))
     (cond
      ((url-is-git? repository-url)
       (command-message)
@@ -91,14 +90,15 @@
                    :directory riisi))
      ((url-is-cvs? repository-url)
       (command-message)
-      (run-process `(hg clone ,repository-url ,pullo) :wait #t
-                   :directory riisi))
+      (run-process `(cvs -qd ,(subseq repository-url 6) co -PA ,pullo)
+        :wait #t
+        :directory riisi))
      ((url-is-fossil? repository-url)
       (command-message)
       (receive (#f #f scheme #f url #f #f)
         (uri-parse repository-url)
         (run-process `(fossil clone ,(string-append scheme ":" url) ,pullo) :wait #t
-                   :directory riisi)))
+                     :directory riisi)))
      (else
       (print "this repository url is not supported")))))
 
@@ -108,8 +108,8 @@
          (tynnyri (build-path kellari pullo))
          (riisi   (build-path panna "riisi" pullo)))
     (load (find-file-in-paths (string-append pullo ".scm")
-                              :paths `(,kaava-kansio)
-                              :pred file-is-readable?))
+            :paths `(,kaava-kansio)
+            :pred file-is-readable?))
     (unless (file-is-directory? riisi)
       (fetch repository pullo))
     (current-directory riisi)
@@ -117,7 +117,10 @@
     (display (string-append (colour-string 229 "installing " ) pullo))
     (newline)
     (install tynnyri)
-    (link pullo)))
+    (link pullo)
+    ;; no error
+    (guard (exc (#t (values)))
+      (caveats))))
 
 
 (define (main args)
@@ -130,8 +133,8 @@
       (newline)))
   (let loop ((pulloa (cdr args)))
     (cond
-      ((null? pulloa)
-       '())
-      (else
-        (install-package (car pulloa))
-        (loop (cdr pulloa))))))
+     ((null? pulloa)
+      '())
+     (else
+      (install-package (car pulloa))
+      (loop (cdr pulloa))))))
