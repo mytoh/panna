@@ -32,7 +32,7 @@
               ,(build-path *panna-directory*
                            "kirjasto/run-panna.scm")
               ,(build-path *panna-directory* "bin" ))
-    (rename-file
+    (sys-rename
       (build-path *panna-directory*
                   "kirjasto/run-panna.scm")
       (build-path *panna-directory*
