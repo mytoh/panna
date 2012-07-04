@@ -41,6 +41,6 @@
 (define (main args)
   (cond
     ((file-exists? (build-path (home-directory) ".panna"))  
-     (format "please remove %s directory" (sys-getenv "OLUTPANIMO")))
+     (format #f "please remove %s directory" (sys-getenv "OLUTPANIMO")))
     (else
       (install)))) 
