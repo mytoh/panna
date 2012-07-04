@@ -26,15 +26,21 @@
                   "kirjasto/run-panna.scm")
       (build-path *panna-directory*
                   "bin/panna"))
-    (print "change run script to executable")
-    (sys-chmod
+    (print "install executable")
+
+    `(install -c -s  -m 555 
+              ,(build-path *panna-directory*
+                           "kirjasto/run-panna.scm")
+              ,(build-path tynnyri "bin" ))
+    (rename-file
       (build-path *panna-directory*
                   "kirjasto/run-panna.scm")
-      774)))
+      (build-path *panna-directory*
+                  "bin/panna"))))
 
 (define (main args)
-(cond
-  ((file-exists? (build-path (home-directory) ".panna"))  
-   (print "please remove ~/.panna directory"))
-  (else
-    (install)))) 
+  (cond
+    ((file-exists? (build-path (home-directory) ".panna"))  
+     (format "please remove %s directory" (sys-getenv "OLUTPANIMO")))
+    (else
+      (install)))) 
