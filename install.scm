@@ -31,7 +31,7 @@
     `(install -c -s  -m 555 
               ,(build-path *panna-directory*
                            "kirjasto/run-panna.scm")
-              ,(build-path tynnyri "bin" ))
+              ,(build-path *panna-directory* "bin" ))
     (rename-file
       (build-path *panna-directory*
                   "kirjasto/run-panna.scm")
