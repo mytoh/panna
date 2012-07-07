@@ -36,7 +36,7 @@
                   "bin/panna")) 
     (print "install executable")  
 
-    `(install -c -s  -m 755 
+    `(install -c -s  -m 0755 
               ,(build-path *panna-directory*
                            "kirjasto/run-panna.scm")
               ,(build-path *panna-directory* "bin" )) 
