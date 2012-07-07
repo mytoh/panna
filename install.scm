@@ -11,27 +11,35 @@
     (print "creating panna directory")
     (make-directory*
       *panna-directory*)
+
     (print "copying library directory")
     (copy-directory*
       "kirjasto"
       (build-path *panna-directory*
                   "kirjasto"))
+
     (print "creating bin/ directory")
     (make-directory*
       (build-path *panna-directory*
                   "bin"))
-    (print "linking run script")
+
+   (print "creating riisi directory") 
+   (make-directory*
+     (build-path *panna-directory*
+                 "riisi"))
+
+    (print "linking run script")  
     (sys-symlink
       (build-path *panna-directory*
                   "kirjasto/run-panna.scm")
       (build-path *panna-directory*
-                  "bin/panna"))
-    (print "install executable")
+                  "bin/panna")) 
+    (print "install executable")  
 
     `(install -c -s  -m 755 
               ,(build-path *panna-directory*
                            "kirjasto/run-panna.scm")
-              ,(build-path *panna-directory* "bin" ))
+              ,(build-path *panna-directory* "bin" )) 
     (sys-rename
       (build-path *panna-directory*
                   "kirjasto/run-panna.scm")
