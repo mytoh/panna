@@ -8,10 +8,9 @@
   (with-usr-local)
   (with-clang)
   (system
-    '(make clean)
-    '(./autogen.sh)
+    '(autoconf)
     `(./configure ,(string-append "--prefix=" tynnyri))
     '(make)
     '(make install)
-    ))
+    '(make clean)))
 

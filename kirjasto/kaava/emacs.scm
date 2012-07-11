@@ -8,11 +8,11 @@
 
 (define (install tynnyri)
   (system
-    '(gmake clean)
-    '(gmake distclean)
     '("./autogen.sh")
     `("./configure" "-with-x-toolkit=gtk3" "-with-wide-int" ,(string-append "--prefix=" tynnyri))
     '(gmake)
     '(gmake install)
+    '(gmake clean)
+    '(gmake distclean)
     ))
 
