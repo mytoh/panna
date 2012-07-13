@@ -30,8 +30,7 @@
   (sys-unsetenv "WERROR")
   ; disable all warnings
   (add-environment-variable "CXXFLAGS" "-w")
-  (add-environment-variable "CFLAGS" "-w")
-  )
+  (add-environment-variable "CFLAGS" "-w"))
 
 (define (with-panna-library)
   (let ((panna (resolve-path (sys-getenv "OLUTPANIMO"))))

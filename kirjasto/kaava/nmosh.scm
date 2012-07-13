@@ -12,12 +12,16 @@
    (define (install prefix)
      (with-clang)
      (with-usr-local)
+     (system '("./gen-git-build.sh"))
+     (make-directory* "build")
+     (current-directory "build")
      (system
-      '(./gen-git-build.sh)
-       `(./configure ,(string-append "--prefix=" prefix) )
+       `("../configure" ,(string-append "--prefix=" prefix) )
        '(gmake)
        '(gmake check)
-       '(gmake install))))
+       '(gmake install))
+     (remove-directory* "build")
+     ))
 
   (else
     (define (install tynnyri)

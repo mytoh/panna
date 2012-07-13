@@ -36,7 +36,15 @@
 
 
 (define (usage status)
-  (exit status "usage: ~a <command> <package-name>\n" *program-name*))
+  (exit status
+        "usage: ~a <command> <package-name>
+
+        install    - install package
+        update,up  - update repository
+        edit       - edit kaava file
+        list,ls    - list installed packages
+        "
+        *program-name*))
 
 (define (main args)
   (let-args (cdr args)
@@ -49,13 +57,15 @@
                     #f))
            (panna (lambda (c)
                     (cond ( kaava
-                            (run-process `(gosh ,(build-path (sys-getenv "OLUTPANIMO")
-                                                             (string-append "kirjasto/panna/komento/" c ".scm"))
+                            (run-process `(gosh ,(build-path
+                                                   (sys-getenv "OLUTPANIMO")
+                                                   (string-append "kirjasto/panna/komento/" c ".scm"))
                                                 ,@kaava)
                                          :wait #t)) 
                       (else
-                        (run-process `(gosh ,(build-path (sys-getenv "OLUTPANIMO")
-                                                         (string-append "kirjasto/panna/komento/" c ".scm")))
+                        (run-process `(gosh ,(build-path
+                                               (sys-getenv "OLUTPANIMO")
+                                               (string-append "kirjasto/panna/komento/" c ".scm")))
                                      :wait #t))))))
       (match (car rest)
         ; command aliases
