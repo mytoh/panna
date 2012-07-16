@@ -20,8 +20,7 @@
        '(gmake)
        '(gmake check)
        '(gmake install))
-     (remove-directory* "build")
-     ))
+     (remove-directory* "build")))
 
   (else
     (define (install tynnyri)
