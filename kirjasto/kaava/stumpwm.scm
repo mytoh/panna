@@ -1,8 +1,8 @@
 (use panna.kaava)
 
-(define kaava "stumpwm")
-(define homepage "http;//github.com/sabatts/stumpwm")
-(define repository "git://github.com/sabatts/stumpwm")
+(kaava "stumpwm")
+(homepage "github.com/sabatts/stumpwm")
+(repository "git://github.com/sabatts/stumpwm")
 
 (define (install tynnyri)
   (with-usr-local)

@@ -2,7 +2,9 @@
 (use panna.kaava)
 (use file.util)
 
-(define kaava "tmux")
+(kaava "tmux")
+(homepage "tmux.sourceforge.net")
+(repository "https://tmux.svn.sourceforge.net/svnroot/tmux")
 
 (define (install tynnyri)
   (make-directory* "etc" )

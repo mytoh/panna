@@ -1,6 +1,8 @@
 (use panna.kaava)
 
-(define kaava   "mplayer")
+(kaava      "mplayer")
+(homepage   "www.mplayerhq.hu")
+(repository   "svn://svn.mplayerhq.hu/mplayer/trunk")
 
 (define (install tynnyri)
   (system

@@ -2,9 +2,9 @@
 
 (use panna.kaava)
 
-(define kaava "subversion")
-(define homepage "http://subversion.apache.org")
-(define repository "http://svn.apache.org/repos/asf/subversion/trunk")
+(kaava "subversion")
+(homepage "subversion.apache.org")
+(repository "http://svn.apache.org/repos/asf/subversion/trunk")
 
 (define (install tynnyri)
   (with-clang)

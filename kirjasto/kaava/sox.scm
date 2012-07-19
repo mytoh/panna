@@ -1,8 +1,9 @@
 (use panna.kaava)
 
 
-(define kaava   "sox")
-(define repository   "git://sox.git.sourceforge.net/gitroot/sox/sox")
+(kaava   "sox")
+(homepage   "sox.sourceforge.net")
+(repository   "git://sox.git.sourceforge.net/gitroot/sox/sox")
 
 
 (define (install tynnyri)

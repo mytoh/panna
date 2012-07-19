@@ -2,9 +2,9 @@
 
 (use panna.kaava)
 
-(define kaava "mercurial")
-(define homepage "http://mercurial.selenic.com")
-(define repository '("http://selenic.com/hg" hg))
+(kaava "mercurial")
+(homepage "mercurial.selenic.com")
+(repository '("http://selenic.com/hg" hg))
 
 (define (install tynnyri)
   (with-clang)

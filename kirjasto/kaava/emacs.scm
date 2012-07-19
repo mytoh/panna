@@ -2,9 +2,9 @@
 
 (use panna.kaava)
 
-(define kaava "emacs")
-(define homepage "http://gnu.org/s/emacs")
-(define repository "git://git.savannah.gnu.org/emacs.git")
+(kaava "emacs")
+(homepage "gnu.org/s/emacs")
+(repository "git://git.savannah.gnu.org/emacs.git")
 
 (define (install tynnyri)
   (system

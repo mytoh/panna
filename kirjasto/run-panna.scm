@@ -77,8 +77,8 @@
          (panna "list"))
         ("home"
          (panna "homepage"))
-        ; ((or "rm" "remove")
-        ;  (panna "install"))
+        ((or "rm" "remove")
+         (panna "uninstall"))
         ("abv"
          (panna "info"))
         ("env"

@@ -2,9 +2,9 @@
 
 (use panna.kaava)
 
-(define kaava "ncmpc")
-(define homepage "http://mpd.wikia.com/wiki/Client:Ncmpc")
-(define repository "git://git.musicpd.org/master/ncmpc.git")
+(kaava "ncmpc")
+(homepage "mpd.wikia.com/wiki/Client:Ncmpc")
+(repository "git://git.musicpd.org/master/ncmpc.git")
 
 (define (install tynnyri)
   (with-clang)

@@ -1,8 +1,9 @@
 
 (use panna.kaava)
 
-(define kaava  "git")
-(define repository "git://github.com/git/git")
+(kaava  "git")
+(homepage  "git-scm.com")
+(repository "git://github.com/git/git")
 
 (define (install tynnyri)
   (with-clang)

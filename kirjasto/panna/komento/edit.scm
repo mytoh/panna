@@ -7,22 +7,17 @@
 
 (define (edit pullo)
   (let ((kaava-tiedosto (find-file-in-paths (string-append pullo ".scm")
-                                            :paths `(,kaava-kansio)
+                                            :paths `(,(kaava-kansio))
                                             :pred file-is-readable?))
         (editor (sys-getenv "EDITOR")))
-
-    (cond 
+    (cond
       (editor
         (run-process `(,editor ,kaava-tiedosto) :wait #t))
       (else
         (run-process `(vim     ,kaava-tiedosto) :wait #t)))))
 
 
-
-
 (define (main args)
   (if (<= 2 (length args))
     (edit (cadr args))
-    (print "you need specify one kaava name")
-    )
-  )
+    (print "you need specify one kaava name")))

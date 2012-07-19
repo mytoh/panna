@@ -2,9 +2,9 @@
 
 (use panna.kaava)
 
-(define kaava "sxiv")
-(define homepage "git://github.com/muennich/sxiv")
-(define repository "git://github.com/muennich/sxiv")
+(kaava "sxiv")
+(homepage "github.com/muennich/sxiv")
+(repository "git://github.com/muennich/sxiv")
 
 (define (install tynnyri)
   (with-clang)

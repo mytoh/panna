@@ -2,9 +2,9 @@
 
 (use panna.kaava)
 
-(define kaava "bazaar")
-(define homepage "http://wiki.bazaar.canonical.com")
-(define repository "bzr://lp:bzr")
+(kaava "bazaar")
+(homepage "wiki.bazaar.canonical.com")
+(repository "bzr://lp:bzr")
 
 (define (install tynnyri)
   (with-clang)

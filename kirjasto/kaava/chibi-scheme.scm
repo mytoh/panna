@@ -2,9 +2,9 @@
 
 (use panna.kaava)
 
-(define kaava "chibi-scheme")
-(define homepage "http://synthcode.com/wiki/chibi-scheme")
-(define repository "https://chibi-scheme.googlecode.com/hg")
+(kaava "chibi-scheme")
+(homepage "synthcode.com/wiki/chibi-scheme")
+(repository "https://chibi-scheme.googlecode.com/hg")
 
 (define (install tynnyri)
   (with-clang)

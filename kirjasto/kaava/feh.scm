@@ -1,9 +1,9 @@
 
 (use panna.kaava)
 
-(define kaava   "feh")
-(define homepage "dummy")
-(define repository   "git://derf.homelinux.org/feh" )
+(kaava   "feh")
+(homepage "feh.finalrewiond.org")
+(repository   "git://derf.homelinux.org/feh" )
 
 (cond
   ; freebsd
@@ -17,8 +17,7 @@
      (with-clang)
      (system
        '(gmake)
-       '(gmake install)
-       )))
+       '(gmake install))))
 
   (else
     (define (install tynnyri)
@@ -27,6 +26,5 @@
       (system
         '(make clean)
         '(make)
-        '(make install)))
-    ))
+        '(make install)))))
 

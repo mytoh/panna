@@ -2,9 +2,9 @@
 
 (use panna.kaava)
 
-(define kaava "m4")
-
-(define repository  "git://git.sv.gnu.org/m4.git"  )
+(kaava "m4")
+(homepage "www.gnu.org/software/m4")
+(repository  "git://git.sv.gnu.org/m4.git"  )
 
 
 (define (install tynnyri)

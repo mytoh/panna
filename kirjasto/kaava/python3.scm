@@ -3,9 +3,9 @@
 
 (use panna.kaava)
 
-(define kaava "python3")
-(define homepage "http://www.python.org")
-(define repository "http://hg.python.org/cpython")
+(kaava "python3")
+(homepage "www.python.org")
+(repository "http://hg.python.org/cpython")
 
 (define (install tynnyri)
   (with-clang)

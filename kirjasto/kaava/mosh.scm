@@ -1,9 +1,9 @@
 
 (use panna.kaava)
 
-(define kaava   "mosh")
-(define homepage "http://mosh.mit.edu/")
-(define repository   "git://github.com/higepon/mosh" )
+(kaava   "mosh")
+(homepage "mosh.mit.edu/")
+(repository   "git://github.com/higepon/mosh" )
 
 (cond
   ; freebsd

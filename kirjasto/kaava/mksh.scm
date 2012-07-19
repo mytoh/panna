@@ -2,9 +2,9 @@
 
 (use panna.kaava)
 
-(define kaava "mksh")
-(define homepage "")
-(define repository "cvs://_anoncvs@anoncvs.mirbsd.org:/cvs")
+(kaava "mksh")
+(homepage "www.mirbsd.org/mksh.htm")
+(repository "cvs://_anoncvs@anoncvs.mirbsd.org:/cvs")
 
 (define (install tynnyri)
   (with-clang)

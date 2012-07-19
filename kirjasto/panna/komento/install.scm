@@ -8,8 +8,6 @@
 
 (define (link pullo)
   (let* ((kaava  (make-parameter pullo))
-         (panna-kansio   (make-parameter (resolve-path (sys-getenv "OLUTPANIMO"))))
-         (kellari-kansio (make-parameter (build-path (panna-kansio) "kellari")))
          (tynnyri-kansio (make-parameter (build-path (kellari-kansio) (kaava)))))
     (current-directory (panna-kansio))
 
@@ -41,12 +39,8 @@
                (directory-fold
                  (tynnyri-kansio)
                  (lambda (path seed)
-                   (cons (list
-                           (relative-path path)
-                           (simplify-path (string-append "."
-                                                         (string-scan path
-                                                                      (tynnyri-kansio)
-                                                                      'after))))
+                   (cons (list (relative-path path)
+                           (simplify-path (string-append "." (string-scan path (tynnyri-kansio) 'after))))
                          seed))
                  '())))
       (for-each
@@ -55,18 +49,15 @@
             (make-directory* (sys-dirname (cadr p))))
           (unless  (file-exists? (cadr p))
             (begin
-              (print (string-append
-                       "linking file "
-                       (colour-string (colour-message)
-                                      (cadr  p))))
+              (display (colour-string (colour-message) "linking file "))
+              (print (colour-string (colour-path)
+                                      (cadr  p)))
               (sys-symlink (car p)
                            (cadr p)))))
         file-list))))
 
 (define (fetch repository-url pullo)
-  (let* ((panna (resolve-path (sys-getenv "OLUTPANIMO")))
-         (riisi (build-path panna "riisi"))
-         (command-message
+  (let* ((command-message
            (lambda ()
              (display ( colour-string (colour-symbol1) ":: "))
              (display ( colour-string (colour-message) "fetching repository"))
@@ -78,48 +69,46 @@
          ((hg) (cond
                  ((> (length repository-url) 2)
                    (run-process `(hg clone ,@(caddr repository-url) ,(car repository-url) ,pullo)
-                                :wait #t :directory riisi))
+                                :wait #t :directory (riisi-kansio)))
                  (else
                    (run-process `(hg clone ,(car repository-url) ,pullo)
-                                :wait #t :directory riisi))))
+                                :wait #t :directory (riisi-kansio)))))
          (else
            (print "this repository url is not supported"))))
       (else
         (cond
           ((url-is-git? repository-url)
            (run-process `(git clone ,repository-url ,pullo) :wait #t
-                        :directory riisi))
+                        :directory (riisi-kansio)))
           ((url-is-hg? repository-url)
            (run-process `(hg clone ,repository-url ,pullo) :wait #t
-                        :directory riisi))
+                        :directory (riisi-kansio)))
           ((url-is-bzr? repository-url)
            (run-process `(bzr branch ,(subseq repository-url 6) ,pullo) :wait #t
-                        :directory riisi))
+                        :directory (riisi-kansio)))
           ((url-is-svn? repository-url)
            (run-process `(svn checkout ,repository-url ,pullo) :wait #t
-                        :directory riisi))
+                        :directory (riisi-kansio)))
           ((url-is-cvs? repository-url)
            (run-process `(cvs -qd ,(subseq repository-url 6) co -PA ,pullo)
                         :wait #t
-                        :directory riisi))
+                        :directory (riisi-kansio)))
           ((url-is-fossil? repository-url)
            (receive (#f #f scheme #f url #f #f)
              (uri-parse repository-url)
              (run-process `(fossil clone ,(string-append scheme ":" url) ,pullo) :wait #t
-                          :directory riisi)))
+                          :directory (riisi-kansio))))
           (else
             (print "this repository url is not supported")))))))
 
 (define (install-package pullo)
-  (let* ((panna   (resolve-path (sys-getenv "OLUTPANIMO")))
-         (kellari (build-path panna "kellari"))
-         (tynnyri (build-path kellari pullo))
-         (riisi   (build-path panna "riisi" pullo)))
+  (let* ((tynnyri (build-path (kellari-kansio) pullo))
+         (riisi   (build-path (panna-kansio) "riisi" pullo)))
     (load (find-file-in-paths (string-append pullo ".scm")
-                              :paths `(,kaava-kansio)
+                              :paths `(,( kaava-kansio))
                               :pred file-is-readable?))
     (unless (file-is-directory? riisi)
-      (fetch repository pullo))
+      (fetch ( repository) pullo))
     (current-directory riisi)
     (display (colour-string (colour-symbol1) ":: "))
     (display (string-append (colour-string (colour-message) "installing " ) 

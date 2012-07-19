@@ -1,15 +1,14 @@
-(define-module panna.ympäristö
+
+
+(define-module panna.väri
 (use gauche.parameter)
 (use file.util)
 (export
-  kaava-kansio
-  panna-kansio
-  kellari-kansio
-  riisi-kansio
 
   colour-package
   colour-message
   colour-command
+  colour-path
   colour-symbol1
   colour-symbol2
 
@@ -18,7 +17,7 @@
   colour-info-homepage
   colour-info-repository
   ))
-(select-module panna.ympäristö)
+(select-module panna.väri)
 
 
 
@@ -28,8 +27,9 @@
 (define riisi-kansio   (make-parameter (build-path (panna-kansio) "riisi")))
 
 (define colour-package (make-parameter 4))
-(define colour-message (make-parameter 137))
+(define colour-message (make-parameter 177))
 (define colour-command (make-parameter 50))
+(define colour-path    (make-parameter 90))
 (define colour-symbol1 (make-parameter 155))
 (define colour-symbol2 (make-parameter 99))
 

@@ -1,7 +1,8 @@
 (use panna.kaava)
 
-(define kaava  "fishfish")
-(define repository   "git://gitorious.org/~ridiculousfish/fish-shell/fishfish.git")
+(kaava  "fishfish")
+(homepage  "github.com/fish-shell/fish-shell")
+(repository   "git://github.com/fish-shell/fish-shell")
 
 (cond
   (( is-freebsd)  

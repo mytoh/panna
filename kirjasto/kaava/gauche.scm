@@ -1,8 +1,9 @@
 (use kirjasto)
 (use panna.kaava)
 
-(define kaava          (make-parameter "gauche"))
-(define repostory    "git://gauche.git.sourceforge.net/gitroot/gauche/Gauche" )
+(kaava          "gauche")
+(homepage    "practical-scheme.net" )
+(repository    "git://gauche.git.sourceforge.net/gitroot/gauche/Gauche" )
 
 (define (install tynnyri)
   (with-clang)
@@ -12,8 +13,6 @@
                   --with-iconv=/usr/local
                   )
     '(make)
-    '(make install)
-    )
-  )
+    '(make install)))
 
 

@@ -1,9 +1,9 @@
 (use panna.kaava)
 (use kirjasto)
 
-(define kaava "mpd")
-(define homepage "mpd.wikia.com")
-(define repository "git://git.musicpd.org/master/mpd.git")
+(kaava "mpd")
+(homepage "mpd.wikia.com")
+(repository "git://git.musicpd.org/master/mpd.git")
 
 
 (define (install tynnyri)

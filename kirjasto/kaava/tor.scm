@@ -2,9 +2,9 @@
 
 (use panna.kaava)
 
-(define kaava "tor")
-(define homepage "https://www.torproject.org/")
-(define repository "git://git.torproject.org/tor.git")
+(kaava "tor")
+(homepage "www.torproject.org/")
+(repository "git://git.torproject.org/tor.git")
 
 (define (install tynnyri)
   (add-environment-variable

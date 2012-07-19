@@ -3,9 +3,9 @@
 
 (use panna.kaava)
 
-(define kaava "python")
-(define homepage "http://www.python.org")
-(define repository '("http://hg.python.org/releasing/2.7.3" hg 
+(kaava "python")
+(homepage "www.python.org")
+(repository '("http://hg.python.org/releasing/2.7.3" hg 
                      ("-b" "2.7")))
 
 (define (install tynnyri)

@@ -2,9 +2,9 @@
 
 (use panna.kaava)
 
-(define kaava   "nmosh")
-(define homepage "http://mosh.monaos.org")
-(define repository   "git://github.com/okuoku/mosh" )
+(kaava   "nmosh")
+(homepage "mosh.monaos.org")
+(repository   "git://github.com/okuoku/mosh" )
 
 (cond
   ; freebsd

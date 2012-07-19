@@ -2,9 +2,9 @@
 
 (use panna.kaava)
 
-(define kaava "aseprite")
-(define homepage "")
-(define repository "git://github.com/dacap/aseprite")
+(kaava "aseprite")
+(homepage "www.aseprite.org")
+(repository "git://github.com/dacap/aseprite")
 
 (define (install tynnyri)
   (make-directory* "build")

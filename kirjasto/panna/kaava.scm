@@ -9,6 +9,8 @@
     (srfi 13))
   (export
     homepage
+    repository
+    kaava
 
     system
     get-os-type
@@ -20,6 +22,10 @@
     with-usr-local
     ))
 (select-module panna.kaava)
+
+(define kaava (make-parameter "unknown"))
+(define homepage (make-parameter "unknown"))
+(define repository (make-parameter "unknown"))
 
 (define (with-clang)
   (sys-setenv "CC" "clang" #t)
@@ -51,7 +57,6 @@
   (add-environment-variable "CPPFLAGS" "-I/usr/local/include")
   (add-environment-variable "LDFLAGS" "-L/usr/local/lib"))
 
-(define homepage (make-parameter "unknown"))
 
 
 (define-syntax system
