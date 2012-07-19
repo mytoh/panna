@@ -53,6 +53,7 @@
   (cond ((rxmatch #/^https?:\/\/(.+?\.)?googlecode\.com\/hg/ url) #t)
         ((rxmatch #/^hg:\/\// url) #t)
         ((rxmatch #/^http:\/\/hg\./ url) #t)
+        ((rxmatch #/^http:\/\/(.+?\/)/hg/ url) #t)
         (else #f)))
 
 (define (url-is-svn? url)

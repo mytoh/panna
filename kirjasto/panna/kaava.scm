@@ -1,6 +1,8 @@
 
 (define-module panna.kaava
   (extend file.util)
+  (use panna.työkalu)  
+  (use panna.ympäristö)
   (use gauche.parameter)
   (use gauche.process)
   (require-extension
@@ -57,8 +59,9 @@
   (syntax-rules ()
     ((_ c )
      (begin
-       (display "[38;5;99m>>> [0m")
-       (for-each (lambda (s) (display #`",s ")) c)
+       ; (display "[38;5;99m>>> [0m")
+       (display (colour-string (colour-symbol2) ">>> "))
+       (for-each (lambda (s) (display (colour-string (colour-command) #`",s "))) c)
        (newline)
        (let* ((p (run-process c :wait #t))
               (status (process-exit-status p)))
