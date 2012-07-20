@@ -48,42 +48,48 @@
 
 (define (main args)
   (let-args (cdr args)
-    ((#f "h|help" (usage 0))
+    ((search "S")
+     (#f "h|help" (usage 0))
      . rest)
-    (when (null-list? rest)
-      (usage 0))
-    (let* ((kaava (if (>= (length rest) 2)
-                    (cdr rest)
-                    #f))
-           (panna (lambda (c)
-                    (cond ( kaava
-                            (run-process `(gosh ,(build-path
-                                                   (sys-getenv "OLUTPANIMO")
-                                                   (string-append "kirjasto/panna/komento/" c ".scm"))
-                                                ,@kaava)
-                                         :wait #t)) 
-                      (else
-                        (run-process `(gosh ,(build-path
-                                               (sys-getenv "OLUTPANIMO")
-                                               (string-append "kirjasto/panna/komento/" c ".scm")))
-                                     :wait #t))))))
-      (match (car rest)
-        ; command aliases
-        ("up"
-         (panna "update"))
-        ("ln"
-         (panna "link"))
-        ("ls"
-         (panna "list"))
-        ("home"
-         (panna "homepage"))
-        ((or "rm" "remove")
-         (panna "uninstall"))
-        ("abv"
-         (panna "info"))
-        ("env"
-         (panna "environment"))
+    (if (null-list? (cdr args))
+      (usage 0)
 
-        (_ (panna (car rest))))))
+      (let* ((kaava (case (length rest)
+                      ((2) (cdr rest))
+                      ((1)  (if search rest #f))
+                      (else #f)))
+             (panna (lambda (c)
+                      (cond
+                        (kaava (run-process `(gosh ,(build-path
+                                                      (sys-getenv "OLUTPANIMO")
+                                                      (string-append "kirjasto/panna/komento/" c ".scm"))
+                                                   ,@kaava)
+                                            :wait #t))
+                        (else (run-process `(gosh ,(build-path
+                                                     (sys-getenv "OLUTPANIMO")
+                                                     (string-append "kirjasto/panna/komento/" c ".scm")))
+                                           :wait #t))))))
+        (cond
+          (search  (panna "search"))
+          (else
+            (match (car rest)
+              ; command aliases
+              ("up"
+               (panna "update"))
+              ("ln"
+               (panna "link"))
+              ("ls"
+               (panna "list"))
+              ("home"
+               (panna "homepage"))
+              ((or "rm" "remove")
+               (panna "uninstall"))
+              ("abv"
+               (panna "info"))
+              ("env"
+               (panna "environment"))
+
+              (_ (panna (car rest))))
+            )))))
   0)
 

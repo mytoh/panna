@@ -1,10 +1,9 @@
 
 (define-module panna.kaava
   (extend file.util)
-  (use panna.työkalu)  
-  (use panna.ympäristö)
   (use gauche.parameter)
   (use gauche.process)
+  (use panna)
   (require-extension
     (srfi 13))
   (export

@@ -5,7 +5,6 @@
 (use rfc.uri)
 (use panna)
 
-
 (define (link pullo)
   (let* ((kaava  (make-parameter pullo))
          (tynnyri-kansio (make-parameter (build-path (kellari-kansio) (kaava)))))

@@ -22,7 +22,7 @@
     (cond
       ((not (null-list? pullo))
        ; update one repository
-       (let ((riisi (build-path (riisi-kansio) (car pullo ))))
+       (let ((riisi (build-path (riisi-kansio) (car pullo))))
          (current-directory riisi)
          (display (colour-string (colour-symbol1) ":: "))
          (display (colour-string (colour-message) "updating "))
@@ -76,7 +76,7 @@
 
 
 (define (main args)
-  (if (<= 2 (length args))
-    (update (cadr args))
-    (update )))
+  (case (length (cdr args))
+    ((1) (update (cadr args)))  
+    ((0) (update))))
 
