@@ -7,7 +7,6 @@
   (require-extension (srfi 98))
   (export
     load-build-file
-    colour-string
     commands
     url-is-git?
     url-is-hg?
@@ -25,10 +24,10 @@
               "kirjasto"
               "kaava"))
 
-(define (load-build-file pullo)
+(define (load-build-file pullo kansio)
   ; find, load kaava file
   (load (find-file-in-paths (string-append pullo ".scm")
-                            :paths `(,kaava-kansio)
+                            :paths `(,kansio)
                             :pred file-is-readable?)))
 
 (define-syntax commands
@@ -39,10 +38,6 @@
        (run-process c1 :wait #t)
        ...))))
 
-(define (colour-string colour-number str)
-  ;; take any -> return string
-  (tree->string `("[38;5;" ,(x->string colour-number) "m" ,(x->string str) "[0m")))
-(provide "panna.työkalu")
 
 (define (url-is-git? url)
   (cond ((rxmatch #/^git:\/\// url) #t)

@@ -104,9 +104,8 @@
 (define (install-package pullo)
   (let* ((tynnyri (build-path (kellari-kansio) pullo))
          (riisi   (build-path (panna-kansio) "riisi" pullo)))
-    (load (find-file-in-paths (string-append pullo ".scm")
-                              :paths `(,( kaava-kansio))
-                              :pred file-is-readable?))
+    (load-build-file pullo (kaava-kansio))
+    
     (unless (file-is-directory? riisi)
       (fetch ( repository) pullo))
     (current-directory riisi)

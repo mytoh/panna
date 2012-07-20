@@ -8,9 +8,7 @@
 
 (define (info pullo)
   (let* ((tynnyri (build-path (kellari-kansio) pullo)))
-    (load (find-file-in-paths (string-append pullo ".scm")
-                              :paths `(,( kaava-kansio))
-                              :pred file-is-readable?))
+    (load-build-file pullo (kaava-kansio))
     (display (colour-string (colour-info) "kaava: "))
     (print (colour-string (colour-info-package)  (kaava)))
     (display (colour-string (colour-info) "homepage: "))
