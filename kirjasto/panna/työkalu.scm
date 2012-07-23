@@ -18,12 +18,6 @@
 (select-module panna.työkalu)
 
 
-(define-constant kaava-kansio
-  ; directory contains panna build file
-  (build-path (sys-getenv "OLUTPANIMO")
-              "kirjasto"
-              "kaava"))
-
 (define (load-build-file pullo kansio)
   ; find, load kaava file
   (load (find-file-in-paths (string-append pullo ".scm")
@@ -40,25 +34,22 @@
 
 
 (define (url-is-git? url)
-  (cond ((rxmatch #/^git:\/\// url) #t)
-        ((rxmatch #/\.git$/ url) #t)
-        (else #f)))
+  (or (rxmatch #/^git:\/\// url)
+        (rxmatch #/\.git$/ url)))
 
 (define (url-is-hg? url)
-  (cond ((rxmatch #/^https?:\/\/(.+?\.)?googlecode\.com\/hg/ url) #t)
-        ((rxmatch #/^hg:\/\// url) #t)
-        ((rxmatch #/^http:\/\/hg\./ url) #t)
-        ((rxmatch #/^http:\/\/(.+?\/)\/hg/ url) #t)
-        (else #f)))
+  (or (rxmatch #/^https?:\/\/(.+?\.)?googlecode\.com\/hg/ url)
+        (rxmatch #/^hg:\/\// url)
+        (rxmatch #/^http:\/\/hg\./ url)
+        (rxmatch #/^http:\/\/(.+?\/)\/hg/ url)))
 
 (define (url-is-svn? url)
-  (cond ((rxmatch #/^https?:\/\/(.+?\.)?googlecode\.com\/svn/ url) #t)
-        ((rxmatch #/^https?:\/\/(.+?\.)?sourceforge\.net\/svnroot/ url) #t)
-        ((rxmatch #/^svn:\/\// url) #t)
-        ((rxmatch #/^svn\+http:\/\// url) #t)
-        ((rxmatch #/^http:\/\/svn.apache.org\/repos/ url) #t)
-        ((rxmatch #/^http:\/\/svn\./ url) #t)
-        (else #f)))
+  (or (rxmatch #/^https?:\/\/(.+?\.)?googlecode\.com\/svn/ url)
+        (rxmatch #/^https?:\/\/(.+?\.)?sourceforge\.net\/svnroot/ url)
+        (rxmatch #/^svn:\/\// url)
+        (rxmatch #/^svn\+http:\/\// url)
+        (rxmatch #/^http:\/\/svn.apache.org\/repos/ url)
+        (rxmatch #/^http:\/\/svn\./ url)))
 
 (define (url-is-bzr? url)
   (cond ((rxmatch #/^bzr:\/\// url) #t)
