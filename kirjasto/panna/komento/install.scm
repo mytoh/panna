@@ -120,7 +120,7 @@
 
 
 (define (main args)
-  (when (>=  (length (cdr  args)) 2)
+  (when (>=  (length (cdr args)) 2)
     (begin
       (display (colour-string (colour-symbol1) "::"))
       (display " installing these packages" )

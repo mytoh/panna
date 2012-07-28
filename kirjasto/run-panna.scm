@@ -57,7 +57,8 @@
       (let* ((kaava (case (length rest)
                       ((2) (cdr rest))
                       ((1)  (if search rest #f))
-                      (else #f)))
+                      ((0) #f)
+                      (else (cdr rest))))
              (panna (lambda (c)
                       (cond
                         (kaava (run-process `(gosh ,(build-path
@@ -90,6 +91,7 @@
                (panna "environment"))
 
               (_ (panna (car rest))))
-            )))))
+            )))
+      ))
   0)
 
