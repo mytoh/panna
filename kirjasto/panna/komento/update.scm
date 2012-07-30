@@ -1,5 +1,6 @@
 
 (use file.util)
+(use util.match)
 (use panna)
 (use srfi-1)
 (use gauche.parameter)
@@ -76,7 +77,7 @@
 
 
 (define (main args)
-  (case (length (cdr args))
-    ((1) (update (cadr args)))  
-    ((0) (update))))
+  (match (length (cdr args))
+    (1 (update (cadr args)))  
+    (0 (update))))
 

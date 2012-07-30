@@ -54,11 +54,11 @@
     (if (null-list? (cdr args))
       (usage 0)
 
-      (let* ((kaava (case (length rest)
-                      ((2) (cdr rest))
-                      ((1)  (if search rest #f))
-                      ((0) #f)
-                      (else (cdr rest))))
+      (let* ((kaava (match (length rest)
+                      (2 (cdr rest))
+                      (1  (if search rest #f))
+                      (0 #f)
+                      (_ (cdr rest))))
              (panna (lambda (c)
                       (cond
                         (kaava (run-process `(gosh ,(build-path
@@ -89,9 +89,6 @@
                (panna "info"))
               ("env"
                (panna "environment"))
-
-              (_ (panna (car rest))))
-            )))
-      ))
+              (_ (panna (car rest)))))))))
   0)
 
