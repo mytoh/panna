@@ -5,7 +5,7 @@
 (repository "https://vim.googlecode.com/hg/")
 
 (define (install tynnyri)
-  (cond 
+  (cond
     ((is-freebsd)
      (with-clang)
      (system
@@ -46,7 +46,5 @@
        '(make)
        '(make install)
        '(make clean)
-       '(make distclean)) 
-      ))
-  )
+       '(make distclean)) )))
 

@@ -5,10 +5,24 @@
 (repository   "svn://svn.mplayerhq.hu/mplayer/trunk")
 
 (define (install tynnyri)
-  (system
-    `(./configure   ,(string-append "--prefix=" tynnyri))
-    '(gmake)
-    '(gmake install)
-    '(gmake clean)
-    '(gmake distclean)
-    ))
+  (cond 
+    ((is-freebsd)
+     (system
+       `(./configure   ,(string-append "--prefix=" tynnyri))
+       '(gmake)
+       '(gmake install)
+       '(gmake clean)
+       '(gmake distclean)
+       )
+     )
+    (else
+     (system
+       `(./configure   ,(string-append "--prefix=" tynnyri))
+       '(make)
+       '(make install)
+       '(make clean)
+       '(make distclean)
+       )
+     )
+    )
+  )
