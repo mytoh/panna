@@ -35,8 +35,8 @@
                   "kirjasto/run-panna.scm")
       (build-path *panna-directory*
                   "bin/panna")) 
-    (print "install executable")  
 
+    (print "install executable")  
     (sys-rename
       (build-path *panna-directory*
                   "kirjasto/run-panna.scm")

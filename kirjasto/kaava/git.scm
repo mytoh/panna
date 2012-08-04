@@ -19,6 +19,4 @@
        '(make clean)
        `(make ,(string-append "prefix=" tynnyri))
        `(make ,(string-append "prefix=" tynnyri) install)
-       ))
-    )
-  )
+       ))))
