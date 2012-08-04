@@ -37,17 +37,12 @@
                   "bin/panna")) 
     (print "install executable")  
 
-    (run-process  `(install -c -s  -m 0755 
-              -o  ,(sys-getenv "USER")
-              ,(build-path *panna-directory*
-                           "kirjasto/run-panna.scm")
-              ,(build-path *panna-directory* "bin" ))
-                  :wait #t) 
     (sys-rename
       (build-path *panna-directory*
                   "kirjasto/run-panna.scm")
       (build-path *panna-directory*
                   "bin/panna"))
+    (run-process `(chmod +x ,(build-path *panna-directory* "bin/panna")) :wait #t)
     ))
 
 (define (main args)
