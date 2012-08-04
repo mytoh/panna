@@ -1,4 +1,5 @@
 (use file.util)
+(use gauche.process)
 
 (define *panna-directory*
   (build-path (home-directory)
