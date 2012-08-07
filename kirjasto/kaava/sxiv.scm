@@ -7,10 +7,17 @@
 (repository "git://github.com/muennich/sxiv")
 
 (define (install tynnyri)
-  (with-clang)
-  (system
-    '(env "CFALGS=-I/usr/local/include/X11" "LDFLAGS=-L/usr/local/lib"
-         ,(string-append "PREFIX=" tynnyri) gmake)
-    '(gmake install)
-    ))
+  (cond
+    ((is-freebsd)
+     (with-clang)
+     (system
+       '(env "CFALGS=-I/usr/local/include/X11" "LDFLAGS=-L/usr/local/lib"
+             ,(string-append "PREFIX=" tynnyri) gmake)
+       '(gmake install)))
+    (else
+     (with-clang)
+     (system
+       '(env "CFALGS=-I/usr/local/include/X11" "LDFLAGS=-L/usr/local/lib"
+             ,(string-append "PREFIX=" tynnyri) make)
+       '(make install)))))
 
