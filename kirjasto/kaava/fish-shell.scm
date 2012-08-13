@@ -1,28 +1,28 @@
 (use panna.kaava)
 
-(kaava  "fishfish")
+(kaava  "fish-shell")
 (homepage  "github.com/fish-shell/fish-shell")
 (repository   "git://github.com/fish-shell/fish-shell")
 
-(cond
-  (( is-freebsd)  
-   (define (install prefix)
+(define (install prefix)
+  (cond
+    ((is-freebsd)
      (with-clang)
      (add-environment-variable
-       "LIBS" "-liconv") 
+       "LIBS" "-liconv")
      (with-usr-local)
      (system
        '(autoconf)
-       `(./configure ,(string-append "--prefix=" prefix) )
+       `(./configure ,(string-append "--prefix=" prefix))
        '(gmake)
        '(gmake install)
        '(gmake clean)
-       )))
-  (else
-    (define (install prefix)
+       ))
+    (else
       (system
-        '(make distclean clean)
+        '(autoconf)
         `(./configure ,(string-append "--prefix=" prefix) --without-xsel)
         '(make)
-        '(make install)))))
+        '(make install))
+      '(make distclean clean))))
 
