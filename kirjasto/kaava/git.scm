@@ -15,8 +15,8 @@
        `(gmake ,(string-append "prefix=" tynnyri) install)
        ))
     (else
-     (system
-       '(make clean)
-       `(make ,(string-append "prefix=" tynnyri))
-       `(make ,(string-append "prefix=" tynnyri) install)
-       ))))
+      (system
+        '(make clean)
+        `(make ,(string-append "prefix=" tynnyri))
+        `(make ,(string-append "prefix=" tynnyri) install)
+        ))))

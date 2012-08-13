@@ -33,17 +33,19 @@
 (use gauche.parameter)
 (use util.match)
 (use file.util)
+(use panna.väri)
 
 
 (define (usage status)
   (exit status
-        "usage: ~a <command> <package-name>
-
-        install    - install package
-        update,up  - update repository
-        edit       - edit kaava file
-        list,ls    - list installed packages
-        "
+        (string-append
+          "usage: ~a <command> <package>\n"
+          "\n"
+          (colour-string 15 "\tinstall")   "    - install packages\n"
+          (colour-string 15 "\tupdate,up") "  - update repository\n"
+          (colour-string 15 "\tedit")      "       - edit recipe file\n"
+          (colour-string 15 "\tlist,ls")   "    - list installed packages\n"
+        )
         *program-name*))
 
 (define (main args)
@@ -75,6 +77,8 @@
           (else
             (match (car rest)
               ; command aliases
+              ((or "asentaa" "ase")
+               (panna "install"))
               ("up"
                (panna "update"))
               ("ln"
