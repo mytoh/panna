@@ -2,7 +2,7 @@
 
 (kaava "stumpwm")
 (homepage "github.com/sabatts/stumpwm")
-(repository "git://github.com/sabatts/stumpwm")
+(repository "git://github.com/sabetts/stumpwm")
 
 (define (install tynnyri)
   (with-usr-local)
