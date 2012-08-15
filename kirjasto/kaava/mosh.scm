@@ -5,25 +5,24 @@
 (homepage "mosh.mit.edu/")
 (repository   "git://github.com/higepon/mosh" )
 
+(define (install prefix)
 (cond
   ; freebsd
   ((is-freebsd)
-   (define (install prefix)
-     (with-clang)
+   (with-clang)
      (with-usr-local)
      (system
       '(./gen-git-build.sh)
        `(./configure ,(string-append "--prefix=" prefix) )
        '(gmake)
        '(gmake check)
-       '(gmake install))))
+       '(gmake install)))
 
   (else
-    (define (install tynnyri)
-      (sys-putenv (string-append "PREFIX=" tynnyri))
+    (sys-putenv (string-append "PREFIX=" tynnyri))
       (with-clang)
       (system
         '(make clean)
         '(make)
-        '(make install)))))
+        '(make install))))) 
 

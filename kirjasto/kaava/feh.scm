@@ -5,10 +5,10 @@
 (homepage "feh.finalrewiond.org")
 (repository   "git://derf.homelinux.org/feh" )
 
-(cond
-  ; freebsd
-  ((is-freebsd)
-   (define (install tynnyri)
+(define (install tynnyri)
+  (cond
+    ; freebsd
+    ((is-freebsd)
      (system
        '(gmake clean))
      (add-environment-variable "PREFIX" tynnyri)
@@ -17,14 +17,13 @@
      (with-clang)
      (system
        '(gmake)
-       '(gmake install))))
+       '(gmake install)))
 
-  (else
-    (define (install tynnyri)
+    (else
       (sys-putenv (string-append "PREFIX=" tynnyri))
       (with-clang)
       (system
         '(make clean)
         '(make)
-        '(make install)))))
+        '(make install))))) 
 

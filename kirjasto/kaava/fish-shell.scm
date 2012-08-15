@@ -14,6 +14,7 @@
      (system
        '(autoconf)
        `(./configure ,(string-append "--prefix=" prefix))
+       '(gmake user_doc)
        '(gmake)
        '(gmake install)
        '(gmake clean)
@@ -22,6 +23,7 @@
       (system
         '(autoconf)
         `(./configure ,(string-append "--prefix=" prefix) --without-xsel)
+       '(make user_doc)
         '(make)
         '(make install))
       '(make distclean clean))))

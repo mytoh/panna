@@ -6,24 +6,23 @@
 (homepage "aria2.sourceforge.net/")
 (repository      "git://github.com/tatsuhiro-t/aria2")
 
-(cond
-  ; freebsd
-  ((is-freebsd)
-   (define (install tynnyri)
+(define (install tynnyri)
+  (cond
+    ; freebsd
+    ((is-freebsd)
      ; (with-clang)
      (system
        '(autoreconf "-fi")
        `("./configure" ,(string-append "--prefix=" tynnyri))
        '(gmake)
        '(gmake install)
-       '(gmake clean))))
+       '(gmake clean)))
 
-  (else
-    (define (install tynnyri)
+    (else
       (sys-putenv (string-append "PREFIX=" tynnyri))
       (with-clang)
       (system
         '(make clean)
         '(make)
-        '(make install)))))
+        '(make install))))) 
 
