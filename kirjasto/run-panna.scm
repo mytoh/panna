@@ -33,7 +33,7 @@
 (use gauche.parameter)
 (use util.match)
 (use file.util)
-(use panna.väri)
+(use panna)
 
 
 (define (usage status)

@@ -1,9 +1,9 @@
 (use gauche.parameter)
-(use gauche.process)
-(use gauche.sequence)
-(use file.util)
-(use rfc.uri)
-(use panna)
+  (use gauche.process)
+  (use gauche.sequence)
+  (use file.util)
+  (use rfc.uri)
+  (use panna)
 
 (define (link pullo)
   (let* ((kaava  (make-parameter pullo))
@@ -39,7 +39,7 @@
                  (tynnyri-kansio)
                  (lambda (path seed)
                    (cons (list (relative-path path)
-                           (simplify-path (string-append "." (string-scan path (tynnyri-kansio) 'after))))
+                               (simplify-path (string-append "." (string-scan path (tynnyri-kansio) 'after))))
                          seed))
                  '())))
       (for-each
@@ -50,7 +50,7 @@
             (begin
               (display (colour-string (colour-message) "linking file "))
               (print (colour-string (colour-path)
-                                      (cadr  p)))
+                                    (cadr  p)))
               (sys-symlink (car p)
                            (cadr p)))))
         file-list))))
@@ -67,8 +67,8 @@
        (case (cadr repository-url)
          ((hg) (cond
                  ((> (length repository-url) 2)
-                   (run-process `(hg clone ,@(caddr repository-url) ,(car repository-url) ,pullo)
-                                :wait #t :directory (riisi-kansio)))
+                  (run-process `(hg clone ,@(caddr repository-url) ,(car repository-url) ,pullo)
+                               :wait #t :directory (riisi-kansio)))
                  (else
                    (run-process `(hg clone ,(car repository-url) ,pullo)
                                 :wait #t :directory (riisi-kansio)))))
@@ -104,12 +104,11 @@
   (let* ((tynnyri (build-path (kellari-kansio) pullo))
          (riisi   (build-path (panna-kansio) "riisi" pullo)))
     (load-build-file pullo (kaava-kansio))
-    
     (unless (file-is-directory? riisi)
       (fetch ( repository) pullo))
     (current-directory riisi)
     (display (colour-string (colour-symbol1) ":: "))
-    (display (string-append (colour-string (colour-message) "installing " ) 
+    (display (string-append (colour-string (colour-message) "installing " )
                             (colour-string (colour-package)  pullo)))
     (newline)
     (install tynnyri)
@@ -117,6 +116,7 @@
     ;; no error
     (guard (exc (#t (values)))
       (caveats))))
+
 
 
 (define (main args)

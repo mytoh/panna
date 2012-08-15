@@ -2,7 +2,8 @@
   (extend
     panna.väri
     panna.työkalu
-    panna.ympäristö)
+    panna.ympäristö
+    )
   )
 
 (provide "panna")
