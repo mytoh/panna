@@ -19,7 +19,6 @@
        )
      )
     (else
-     (with-clang)
      (system
        '(./Util/preconfig)
        `(./configure ,(string-append "--prefix=" tynnyri))

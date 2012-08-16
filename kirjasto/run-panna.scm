@@ -41,10 +41,10 @@
         (string-append
           "usage: ~a <command> <package>\n"
           "\n"
-          (colour-string 15 "\tinstall")   "    - install packages\n"
-          (colour-string 15 "\tupdate,up") "  - update repository\n"
-          (colour-string 15 "\tedit")      "       - edit recipe file\n"
-          (colour-string 15 "\tlist,ls")   "    - list installed packages\n"
+          (format #f "    ~@a ~@a" (colour-string 15 "install")   "- install packages\n")
+          (format #f "    ~@a ~@a" (colour-string 15 "update,up") "- update repository\n")
+          (format #f "    ~@a ~@a" (colour-string 15 "edit")      "- edit recipe file\n")
+          (format #f "    ~@a ~@a" (colour-string 15 "list,ls")   "- list installed packages\n")
         )
         *program-name*))
 
