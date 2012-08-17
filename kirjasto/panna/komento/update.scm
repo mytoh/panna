@@ -24,9 +24,9 @@
        ; update one repository
        (let ((riisi (build-path (riisi-kansio) (car pullo))))
          ; update panna
+         (current-directory (panna-kansio))
          (display (colour-string (colour-symbol1) ":: "))
          (display (colour-string (colour-message) "updating panna repository"))
-         (current-directory (panna-kansio))
          (commands '(git pull))
 
          (current-directory riisi)
@@ -56,9 +56,9 @@
       (else
         (let* ((repos  (directory-list (riisi-kansio) :children? #t :add-path? #t)))
          ; update panna
+         (current-directory (panna-kansio))
          (display (colour-string (colour-symbol1) ":: "))
          (display (colour-string (colour-message) "updating panna repository"))
-         (current-directory (panna-kansio))
          (commands '(git pull))
 
           (for-each (lambda (repo)

@@ -107,6 +107,7 @@
     (display (colour-string (colour-symbol1) ":: "))
     (display (string-append (colour-string (colour-message) "installing " )
                             (colour-string (colour-package)  pullo)))
+    (newline)
     (unless (file-is-directory? riisi)
       (fetch ( repository) pullo))
     (current-directory riisi)
