@@ -116,7 +116,9 @@
     (link pullo)
     ;; no error
     (guard (exc (#t (values)))
-      (caveats))))
+      (caveats))
+
+    (newline)))
 
 
 
