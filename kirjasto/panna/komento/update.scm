@@ -27,7 +27,7 @@
          (display (colour-string (colour-symbol1) ":: "))
          (display (colour-string (colour-message) "updating panna repository"))
          (current-directory (panna-kansio))
-         (run-process '(git pull) :wait #t)
+         (commands '(git pull))
 
          (current-directory riisi)
          (display (colour-string (colour-symbol1) ":: "))
@@ -59,7 +59,7 @@
          (display (colour-string (colour-symbol1) ":: "))
          (display (colour-string (colour-message) "updating panna repository"))
          (current-directory (panna-kansio))
-         (run-process '(git pull) :wait #t)
+         (commands '(git pull))
 
           (for-each (lambda (repo)
                       (current-directory repo)
