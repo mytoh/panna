@@ -7,7 +7,6 @@
 (define (install tynnyri)
   (cond
     ((is-freebsd)
-     (with-clang)
      (system
        `(./configure   ,(string-append
                           "--prefix=" tynnyri)
