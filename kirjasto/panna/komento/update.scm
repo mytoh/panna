@@ -18,8 +18,7 @@
                ((file-exists? (build-path dir "CVS"))
                 'cvs)
                ((file-exists? (build-path dir ".bzr"))
-                'bzr)
-               ))))
+                'bzr)))))
     (cond
       ((not (null-list? pullo))
        ; update one repository
@@ -90,6 +89,6 @@
 
 (define (main args)
   (match (length (cdr args))
-    (1 (update (cadr args)))  
+    (1 (update (cadr args)))
     (0 (update))))
 
