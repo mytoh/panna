@@ -24,6 +24,10 @@
       ((not (null-list? pullo))
        ; update one repository
        (let ((riisi (build-path (riisi-kansio) (car pullo))))
+         ; update panna
+         (current-directory (panna-kansio))
+         (commands '(git pull))
+
          (current-directory riisi)
          (display (colour-string (colour-symbol1) ":: "))
          (display (colour-string (colour-message) "updating "))
