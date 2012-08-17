@@ -46,7 +46,9 @@
         (^p
           (unless (file-exists? (sys-dirname (cadr p)))
             (make-directory* (sys-dirname (cadr p))))
-          (unless  (file-exists? (cadr p))
+          (unless  (or (file-exists? (cadr p))
+                     (string=? (path-extension (cadr p))
+                               "old"))
             (begin
               (display (colour-string (colour-message) "linking file "))
               (print (colour-string (colour-path)

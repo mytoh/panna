@@ -12,7 +12,8 @@
      (with-clang)
      (system
        '(./Util/preconfig)
-       `(./configure ,(string-append "--prefix=" tynnyri))
+       `(./configure ,(string-append "--prefix=" tynnyri)
+                     --enable-multibyte)
        `(gmake)
        `(gmake install)
        `(gmake clean)
