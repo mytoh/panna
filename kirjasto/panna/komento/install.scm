@@ -122,6 +122,7 @@
     (guard (exc (#t (values)))
       (display (colour-string (colour-symbol1) ":: "))
       (display (colour-string (colour-message) "Caveats"))
+      (newline)
       (caveats))
 
     (newline)))
