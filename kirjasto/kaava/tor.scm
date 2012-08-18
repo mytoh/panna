@@ -14,13 +14,13 @@
   (with-usr-local)
   (with-clang)
   (system
-    '(make clean)
-    '(make distclean)
     `("./configure" ,(string-append "--prefix=" tynnyri)
                   "--with-openssl-dir=\"/usr/\""
                   "--disable-asciidoc"
                   )
     '(make)
     '(make install)
+    '(make clean)
+    '(make distclean)
     ))
 
