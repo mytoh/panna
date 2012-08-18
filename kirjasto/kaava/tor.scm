@@ -14,6 +14,7 @@
   (with-usr-local)
   (with-clang)
   (system
+    '(./autogen.sh)
     `("./configure" ,(string-append "--prefix=" tynnyri)
                   "--with-openssl-dir=\"/usr/\""
                   "--disable-asciidoc"
