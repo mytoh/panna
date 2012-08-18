@@ -22,6 +22,5 @@
     '(make)
     '(make install)
     '(make clean)
-    '(make distclean)
-    ))
+    '(make distclean)))
 
