@@ -12,7 +12,7 @@
     '(./autogen.sh)
     `(./configure ,(string-append "--prefix=" tynnyri))
     '(make)
-    '(make verify)
+    ; '(make verify)
     '(make install)
     '(make clean)
     '(make distclean)
