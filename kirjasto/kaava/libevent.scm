@@ -9,6 +9,7 @@
 (define (install tynnyri)
   (with-clang)
   (system
+    '(./autogen.sh)
     `(./configure ,(string-append "--prefix=" tynnyri))
     '(make)
     '(make verify)
