@@ -13,7 +13,6 @@
     (newline)
     (display (colour-string (colour-symbol1) ":: "))
     (print (colour-string (colour-message) "symlinking files"))
-    (newline)
     (letrec ((relative-path
                (lambda (p)
                  (fold
@@ -121,9 +120,9 @@
     ;; no error
     (guard (exc (#t (values)))
       (when (procedure? caveats)
-      (display (colour-string (colour-symbol1) ":: "))  
-      (display (colour-string (colour-message) "Caveats"))  
-      (newline)  
+      (display (colour-string (colour-symbol1) ":: "))
+      (display (colour-string (colour-message) "Caveats"))
+      (newline)
       (caveats)))
 
     (newline)))
