@@ -53,7 +53,7 @@
   (let-args (cdr args)
     ((search "S|search" #f)
      (prefix "P|prefix" #f)
-     (#f "h|help" => (usage))
+     (help "h|help" => (usage))
      (else (opt . _) (print "Unknown option :" opt) (usage))
      . rest)
     (if (null-list? (cdr args))
