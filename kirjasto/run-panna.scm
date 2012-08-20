@@ -33,7 +33,7 @@
 (use gauche.parameter)
 (use util.match)
 (use file.util)
-(require (srfi 98))
+; (require (srfi 98))
 (use panna)
 
 
@@ -76,7 +76,7 @@
                                            :wait #t))))))
         (cond
           (search (panna "search"))
-          (prefix (print (get-environment-variables "OLUTPANIMO")))
+          (prefix (print (sys-getenv "OLUTPANIMO")))
           (else
             (match (car rest)
               ; command aliases
