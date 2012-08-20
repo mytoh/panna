@@ -51,8 +51,8 @@
 
 (define (main args)
   (let-args (cdr args)
-    ((search "S|search" #f)
-     (prefix "P|prefix" #f)
+    ((search "S|search")
+     (prefix "P|prefix")
      (help "h|help" => (usage))
      (else (opt . _) (print "Unknown option :" opt) (usage))
      . rest)
