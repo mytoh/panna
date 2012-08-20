@@ -33,6 +33,7 @@
 (use gauche.parameter)
 (use util.match)
 (use file.util)
+(require (srfi 98))
 (use panna)
 
 
@@ -51,6 +52,7 @@
 (define (main args)
   (let-args (cdr args)
     ((search "S")
+     (prefix "prefix")
      (#f "h|help" (usage 0))
      . rest)
     (if (null-list? (cdr args))
@@ -73,7 +75,8 @@
                                                      (string-append "kirjasto/panna/komento/" c ".scm")))
                                            :wait #t))))))
         (cond
-          (search  (panna "search"))
+          (search (panna "search"))
+          (prefix (print (get-environment-variables "OLUTPANIMO")))
           (else
             (match (car rest)
               ; command aliases
