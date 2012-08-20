@@ -37,7 +37,7 @@
 (use panna)
 
 
-(define (usage status)
+(define (usage)
   (exit 0
         (string-append
           "usage: ~a <command> <package>\n"
