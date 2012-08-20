@@ -52,12 +52,12 @@
 (define (main args)
   (let-args (cdr args)
     ((search "S|search")
-     (prefix "P|prefix" => (print (sys-getenv "OLUTPANIMO")))
-     (help "h|help" => (usage))
+     (prefix "prefix" )
+     (#f "h|help" => usage)
      (else (opt . _) (print "Unknown option :" opt) (usage))
      . rest)
     (if (null-list? (cdr args))
-      (usage 0)
+      (usage)
       (let* ((kaava (match (length rest)
                       (2 (cdr rest))
                       (1  (if search rest #f))
@@ -76,6 +76,7 @@
                                            :wait #t))))))
         (cond
           (search (panna "search"))
+          (prefix (print (sys-getenv "OLUTPANIMO")))
           (else
             (match (car rest)
               ; command aliases
