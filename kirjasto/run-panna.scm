@@ -38,7 +38,7 @@
 
 
 (define (usage status)
-  (exit status
+  (exit 0
         (string-append
           "usage: ~a <command> <package>\n"
           "\n"
@@ -51,9 +51,10 @@
 
 (define (main args)
   (let-args (cdr args)
-    ((search "S")
+    ((search "S|search")
      (prefix "prefix")
-     (#f "h|help" (usage 0))
+     (#f "h|help" => (usage))
+     (else (opt . _) (print "Unknown option :" opt) (usage))
      . rest)
     (if (null-list? (cdr args))
       (usage 0)
