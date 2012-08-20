@@ -9,10 +9,6 @@
 (define (install tynnyri)
   (with-clang)
   (system
-    `(./configure ,(string-append "--prefix=" tynnyri))
-    '(make)
-    '(make install)
-    '(make clean)
-    '(make distclean)
+    `(python3.3 setup.py install ,(string-append "--prefix=" tynnyri))
     ))
 
