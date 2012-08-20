@@ -46,7 +46,7 @@
           (format #f "    ~@a ~@a" (colour-string 15 "update,up") "- update repository\n")
           (format #f "    ~@a ~@a" (colour-string 15 "edit")      "- edit recipe file\n")
           (format #f "    ~@a ~@a" (colour-string 15 "list,ls")   "- list installed packages\n")
-        )
+          )
         *program-name*))
 
 (define (main args)
@@ -58,7 +58,6 @@
      . rest)
     (if (null-list? (cdr args))
       (usage 0)
-
       (let* ((kaava (match (length rest)
                       (2 (cdr rest))
                       (1  (if search rest #f))
