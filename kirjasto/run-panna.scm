@@ -52,7 +52,7 @@
 (define (main args)
   (let-args (cdr args)
     ((search "S|search")
-     (prefix "P|prefix")
+     (prefix "P|prefix" => (print (sys-getenv "OLUTPANIMO")))
      (help "h|help" => (usage))
      (else (opt . _) (print "Unknown option :" opt) (usage))
      . rest)
@@ -76,7 +76,6 @@
                                            :wait #t))))))
         (cond
           (search (panna "search"))
-          (prefix (print (sys-getenv "OLUTPANIMO")))
           (else
             (match (car rest)
               ; command aliases
