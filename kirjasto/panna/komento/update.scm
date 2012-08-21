@@ -90,6 +90,7 @@
 
 
 (define (main args)
+  (print args)
   (match (length (cdr args))
     (1 (update (cadr args)))
     (0 (update))))
