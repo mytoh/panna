@@ -72,31 +72,29 @@
                           (if (file-exists? (build-path
                                               komento-directory
                                               (path-swap-extension c "scm")))
-                          (run-process `(gosh ,(build-path
-                                                      (sys-getenv "OLUTPANIMO")
-                                                      "kirjasto/panna/komento/"
-                                                      (path-swap-extension c "scm"))
-                                                   ,@kaava)
-                                            :wait #t)
-                          (run-process `(gosh ,(build-path
-                                                      (sys-getenv "OLUTPANIMO")
-                                                      "kirjasto/panna/komento/install.scm")
-                                                   ,@rest)
-                                            :wait #t)
-                          ))
-                        (else 
+                            (run-process `(gosh ,(build-path
+                                                   (sys-getenv "OLUTPANIMO")
+                                                   "kirjasto/panna/komento/"
+                                                   (path-swap-extension c "scm"))
+                                                ,@kaava)
+                                         :wait #t)
+                            (run-process `(gosh ,(build-path
+                                                   (sys-getenv "OLUTPANIMO")
+                                                   "kirjasto/panna/komento/install.scm")
+                                                ,@rest)
+                                         :wait #t)))
+                        (else
                           (if (file-exists? (build-path komento-directory
                                                         (path-swap-extension c "scm")))
-                          (run-process `(gosh ,(build-path
-                                                 komento-directory
-                                                     (path-swap-extension c "scm")))
-                                           :wait #t)
-                          (run-process `(gosh ,(build-path
-                                                     (sys-getenv "OLUTPANIMO")
-                                                     "kirjasto/panna/komento/install.scm")
-                                              ,@rest)
-                                           :wait #t)
-                          ))))))
+                            (run-process `(gosh ,(build-path
+                                                   komento-directory
+                                                   (path-swap-extension c "scm")))
+                                         :wait #t)
+                            (run-process `(gosh ,(build-path
+                                                   (sys-getenv "OLUTPANIMO")
+                                                   "kirjasto/panna/komento/install.scm")
+                                                ,@rest)
+                                         :wait #t)))))))
         (cond
           (search (panna "search"))
           (prefix (print (get-environment-variable "OLUTPANIMO")))
