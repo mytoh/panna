@@ -14,12 +14,11 @@
       :pred file-is-readable?)
     (lambda (p)
       (with-input-from-port p
-                            (lambda ()
-                              (port-for-each
-                                (lambda (line)
-                                  (print line)
-                                  )
-                                read-line))))))
+        (lambda ()
+          (port-for-each
+            (lambda (line)
+              (print line))
+            read-line))))))
 
 (define (main args)
   (cat (cdr args)))

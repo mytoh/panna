@@ -51,12 +51,17 @@
                                  "")
                                "old"))
             (begin
-              (display (colour-string (colour-message) "linking file "))
-              (print (colour-string (colour-path)
-                                    (cadr  p)))
+              (format (current-output-port)
+                      "~a\r"
+                      (string-append (colour-string (colour-message) "linking file ")
+                                     (colour-string (colour-path)
+                                                    (cadr  p)))) 
+              (flush)
+              (sys-select #f #f #f 90000)
               (sys-symlink (car p)
                            (cadr p)))))
         file-list))))
+
 
 (define (fetch repository-url pullo)
   (let* ((command-message
@@ -120,10 +125,10 @@
     ;; no error
     (guard (exc (#t (values)))
       (when (procedure? caveats)
-      (display (colour-string (colour-symbol1) ":: "))
-      (display (colour-string (colour-message) "Caveats"))
-      (newline)
-      (caveats)))
+        (display (colour-string (colour-symbol1) ":: "))
+        (display (colour-string (colour-message) "Caveats"))
+        (newline)
+        (caveats)))
 
     (newline)))
 

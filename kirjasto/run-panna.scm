@@ -33,7 +33,7 @@
 (use gauche.parameter)
 (use util.match)
 (use file.util)
-; (require (srfi 98))
+(require-extension (srfi 98))
 (use panna)
 
 
@@ -58,25 +58,48 @@
      . rest)
     (if (null-list? (cdr args))
       (usage)
-      (let* ((kaava (match (length rest)
+      (let* ((komento-directory
+               (build-path (sys-getenv "OLUTPANIMO")
+                           "kirjasto/panna/komento/"))
+             (kaava (match (length rest)
                       (2 (cdr rest))
                       (1  (if search rest #f))
                       (0 #f)
                       (_ (cdr rest))))
              (panna (lambda (c)
                       (cond
-                        (kaava (run-process `(gosh ,(build-path
+                        (kaava
+                          (if (file-exists? (build-path
+                                              komento-directory
+                                              (path-swap-extension c "scm")))
+                          (run-process `(gosh ,(build-path
                                                       (sys-getenv "OLUTPANIMO")
-                                                      (string-append "kirjasto/panna/komento/" c ".scm"))
+                                                      "kirjasto/panna/komento/"
+                                                      (path-swap-extension c "scm"))
                                                    ,@kaava)
-                                            :wait #t))
-                        (else (run-process `(gosh ,(build-path
+                                            :wait #t)
+                          (run-process `(gosh ,(build-path
+                                                      (sys-getenv "OLUTPANIMO")
+                                                      "kirjasto/panna/komento/install.scm")
+                                                   ,@rest)
+                                            :wait #t)
+                          ))
+                        (else 
+                          (if (file-exists? (build-path komento-directory
+                                                        (path-swap-extension c "scm")))
+                          (run-process `(gosh ,(build-path
+                                                 komento-directory
+                                                     (path-swap-extension c "scm")))
+                                           :wait #t)
+                          (run-process `(gosh ,(build-path
                                                      (sys-getenv "OLUTPANIMO")
-                                                     (string-append "kirjasto/panna/komento/" c ".scm")))
-                                           :wait #t))))))
+                                                     "kirjasto/panna/komento/install.scm")
+                                              ,@rest)
+                                           :wait #t)
+                          ))))))
         (cond
           (search (panna "search"))
-          (prefix (print (sys-getenv "OLUTPANIMO")))
+          (prefix (print (get-environment-variable "OLUTPANIMO")))
           (else
             (match (car rest)
               ; command aliases
