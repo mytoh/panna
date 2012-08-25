@@ -20,7 +20,22 @@
                ((file-exists? (build-path dir "CVS"))
                 'cvs)
                ((file-exists? (build-path dir ".bzr"))
-                'bzr)))))
+                'bzr))))
+         (git-update (lambda (repo)
+                       (let ((pout (process-output->string '(git pull --rebase))))
+                       (if (string=? pout
+                               "Current branch master is up to date.")
+                           (begin
+                             (sys-select #f #f #f 100000)
+                             (display "\r")
+                             (run-process '(tput el1) :wait #t)
+                             (message "none to update ")
+                             (display (colour-string (colour-package) (last (string-split repo "/"))))
+                             (newline)
+                             (flush)
+                             (sys-select #f #f #f 100000))
+                       (print pout)
+                       )))))
     (cond
       ((not (null-list? pullo))
        ; update one repository
@@ -68,7 +83,8 @@
 
               (message "updating ")
               (display (colour-string (colour-package) (last (string-split repo "/"))))
-              (newline)
+              (flush)
+              ; (newline)
 
               (ecase (vcs-directory (current-directory))
                 ((hg)
@@ -76,8 +92,10 @@
                    '(hg pull)
                    '(hg update)))
                 ((git)
-                 (commands
-                 '(git pull --rebase)))
+                 (git-update repo)
+                 ; (commands
+                 ; '(git pull --rebase))
+                 )
                 ((svn)
                  (commands
                    '(svn update)))
