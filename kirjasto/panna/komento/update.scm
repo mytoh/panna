@@ -1,9 +1,11 @@
 
 (use file.util)
 (use util.match)
-(use panna)
 (use srfi-1)
 (use gauche.parameter)
+(use gauche.process)
+
+(use panna)
 
 (define (update . pullo)
   (let* ((vcs-directory
@@ -25,14 +27,12 @@
        (let ((riisi (build-path (riisi-kansio) (car pullo))))
          ; update panna
          (current-directory (panna-kansio))
-         (display (colour-string (colour-symbol1) ":: "))
-         (display (colour-string (colour-message) "updating panna repository"))
+         (message  "updating panna repository")
          (newline)
          (commands '(git pull))
 
          (current-directory riisi)
-         (display (colour-string (colour-symbol1) ":: "))
-         (display (colour-string (colour-message) "updating "))
+         (message  "updating ")
          (display (colour-string (colour-package) (last (string-split (current-directory) "/"))))
          (newline)
          (ecase (vcs-directory riisi)
@@ -58,18 +58,18 @@
         (let* ((repos  (directory-list (riisi-kansio) :children? #t :add-path? #t)))
           ; update panna
           (current-directory (panna-kansio))
-          (display (colour-string (colour-symbol1) ":: "))
-          (display (colour-string (colour-message) "updating panna repository"))
+          (message  "updating panna repository")
           (newline)
           (commands '(git pull))
-
+          (flush)
           (for-each
             (lambda (repo)
               (current-directory repo)
-              (display (colour-string (colour-symbol1) ":: "))
-              (display (colour-string (colour-message) "updating "))
+
+              (message "updating ")
               (display (colour-string (colour-package) (last (string-split repo "/"))))
               (newline)
+
               (ecase (vcs-directory (current-directory))
                 ((hg)
                  (commands
@@ -77,7 +77,7 @@
                    '(hg update)))
                 ((git)
                  (commands
-                   '(git pull --rebase)))
+                 '(git pull --rebase)))
                 ((svn)
                  (commands
                    '(svn update)))
@@ -87,6 +87,7 @@
                 ((bzr)
                  (commands
                    '(bzr update)))))
+
             repos))))))
 
 

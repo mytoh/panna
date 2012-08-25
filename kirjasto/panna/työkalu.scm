@@ -5,6 +5,7 @@
   (use file.util)
   (use text.tree)
   (require-extension (srfi 98))
+  (use panna.väri)
   (export
     load-build-file
     commands
@@ -14,6 +15,7 @@
     url-is-cvs?
     url-is-fossil?
     url-is-svn?
+    message
     ))
 (select-module panna.työkalu)
 
@@ -62,3 +64,8 @@
 (define (url-is-cvs? url)
   (cond (( #/^cvs:\/\// url) #t)
         (else #f)))
+
+
+(define (message msg)
+  (display (colour-string (colour-symbol1) ":: "))
+  (display (colour-string (colour-message) msg)))
