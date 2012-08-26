@@ -23,19 +23,22 @@
                 'bzr))))
          (git-update (lambda (repo)
                        (let ((pout (process-output->string '(git pull --rebase))))
-                       (if (string=? pout
-                               "Current branch master is up to date.")
-                           (begin
-                             (sys-select #f #f #f 100000)
-                             (display "\r")
-                             (run-process '(tput el1) :wait #t)
-                             (message "none to update ")
+                         (cond
+                           ((string=? pout "Current branch master is up to date.")
+                            (sys-select #f #f #f 100000)
+                            (display "\r")
+                            (run-process '(tput el1) :wait #t)
+                            (message "none to update ")
+                            (display (colour-string (colour-package) (last (string-split repo "/"))))
+                            (newline)
+                            (flush)
+                            (sys-select #f #f #f 100000))
+                           (else
+                             (newline)
+                             (message "Updated ")
                              (display (colour-string (colour-package) (last (string-split repo "/"))))
                              (newline)
-                             (flush)
-                             (sys-select #f #f #f 100000))
-                       (print pout)
-                       )))))
+                             (print pout)))))))
     (cond
       ((not (null-list? pullo))
        ; update one repository
