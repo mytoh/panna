@@ -36,7 +36,7 @@
                            (else
                              (newline)
                              (message "Updated ")
-                             (display (colour-string 114 (last (string-split repo "/"))))
+                             (display (colour-string 194 (last (string-split repo "/"))))
                              (newline)
                              (print pout)))))))
     (cond
@@ -84,7 +84,8 @@
             (lambda (repo)
               (current-directory repo)
 
-              (message "updating ")
+              (display (colour-string (colour-symbol1) ">> "))
+              (display (colour-string 114 "Updating "))
               (display (colour-string (colour-package) (last (string-split repo "/"))))
               (flush)
               ; (newline)
