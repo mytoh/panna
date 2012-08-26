@@ -36,7 +36,7 @@
                            (else
                              (newline)
                              (message "Updated ")
-                             (display (colour-string 214 (last (string-split repo "/"))))
+                             (display (colour-string 114 (last (string-split repo "/"))))
                              (newline)
                              (print pout)))))))
     (cond
