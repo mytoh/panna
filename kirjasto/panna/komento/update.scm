@@ -75,13 +75,12 @@
 (define (update . pullo)
     (cond
       ((not (null-list? pullo))
-       ; update one repository
+       ;; update one repository
        (let ((riisi (build-path (riisi-kansio) (car pullo))))
          ; update panna
          (update-panna)
          (update-repo riisi)))
-
-      ; update all repositories
+      ;; update all repositories
       (else
         (let* ((repos  (directory-list (riisi-kansio) :children? #t :add-path? #t)))
           ; update panna
