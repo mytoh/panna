@@ -38,7 +38,7 @@
         (message "Updated ")
         (display (colour-string 194 (last (string-split dir "/"))))
         (newline)
-        (newline)
+        (flush)
         (print pout)))))
 
 
