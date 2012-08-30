@@ -36,6 +36,7 @@
                   "bin/panna"))
     (run-process `(chmod +x ,(build-path *panna-directory* "bin/panna")) :wait #t)
 
+    (newline)
     (print "   .-----.---.-.-----.-----.---.-." )
     (print "   |  _  |  _  |     |     |  _  |" )
     (print "   |   __|___._|__|__|__|__|___._|" )
