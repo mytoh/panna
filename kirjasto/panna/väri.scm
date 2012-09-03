@@ -37,11 +37,11 @@
        ...))))
 
 
-(define-colours (colour-package           4)
+(define-colours (colour-package           27)
                 (colour-message           177)
                 (colour-command           50)
                 (colour-path              90)
-                (colour-symbol1           155)
+                (colour-symbol1           221)
                 (colour-symbol2           99)
                 (colour-info              204)
                 (colour-info-homepage     62)

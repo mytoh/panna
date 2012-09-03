@@ -38,8 +38,8 @@
         (message "Updated ")
         (display (colour-string 194 (last (string-split dir "/"))))
         (newline)
-        (flush)
-        (print pout)))))
+        (print pout)
+        (flush)))))
 
 
 (define (update-repo dir)
@@ -92,7 +92,6 @@
 
 
 (define (main args)
-  (print "debuging")
   (match (length (cdr args))
     (1 (update (cadr args)))
     (0 (update))))

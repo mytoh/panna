@@ -9,6 +9,7 @@
 (define (install tynnyri)
   (cond
     ((is-freebsd)
+     (make-directory* "etc")
      (system
        '(aclocal)
        '(automake --add-missing --force-missing --copy --foreign)
