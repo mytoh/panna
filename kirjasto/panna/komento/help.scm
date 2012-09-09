@@ -12,13 +12,12 @@
         (string-append
           "usage: ~a <command> <package>\n"
           "\n"
-          (format #f "    ~@a ~@a" (colour-string 15 "install")   "- install packages\n")
-          (format #f "    ~@a ~@a" (colour-string 15 "update,up") "- update repository\n")
-          (format #f "    ~@a ~@a" (colour-string 15 "edit")      "- edit recipe file\n")
-          (format #f "    ~@a ~@a" (colour-string 15 "list,ls")   "- list installed packages\n")
+          (format #f "    ~@a ~@a" (colour-string 5 "install")   (colour-string 223 "  install packages\n"))
+          (format #f "    ~@a ~@a" (colour-string 5 "update,up") (colour-string 223 "update repository\n"))
+          (format #f "    ~@a ~@a" (colour-string 5 "edit")      (colour-string 223 "     edit recipe file\n"))
+          (format #f "    ~@a ~@a" (colour-string 5 "list,ls")   (colour-string 223 "  list installed packages\n"))
           )
         *program-name*))
 
 (define (main args)
-  (print args)
-  (help (cdr args)))
+  (help))
