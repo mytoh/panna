@@ -10,7 +10,7 @@
 (define (help)
   (exit 0
         (string-append
-          "usage: ~a <command> <package>\n"
+          "usage: panna <command> <package>\n"
           "\n"
           (format #f "    ~@a ~@a" (colour-string 5 "cat")       (colour-string 223 "    display build file\n"))
           (format #f "    ~@a ~@a" (colour-string 5 "clean")       (colour-string 223 "    clean source directory\n"))
@@ -22,8 +22,7 @@
           (format #f "    ~@a ~@a" (colour-string 5 "search")       (colour-string 223 "    search package or available packages\n"))
           (format #f "    ~@a ~@a" (colour-string 5 "uninstall")       (colour-string 223 "    uninstall package\n"))
           (format #f "    ~@a ~@a" (colour-string 5 "update,up") (colour-string 223 "update repository\n"))
-          )
-        *program-name*))
+          )))
 
 (define (main args)
   (help))
