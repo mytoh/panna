@@ -12,17 +12,20 @@
         (string-append
           "usage: panna <command> <package>\n"
           "\n"
-          (format #f "    ~@a ~@a" (colour-string 5 "cat")       (colour-string 223 "    display build file\n"))
-          (format #f "    ~@a ~@a" (colour-string 5 "clean")       (colour-string 223 "    clean source directory\n"))
-          (format #f "    ~@a ~@a" (colour-string 5 "edit")      (colour-string 223 "     edit recipe file\n"))
-          (format #f "    ~@a ~@a" (colour-string 5 "help")      (colour-string 223 "    display this message\n"))
-          (format #f "    ~@a ~@a" (colour-string 5 "info")       (colour-string 223 "    information about package\n"))
-          (format #f "    ~@a ~@a" (colour-string 5 "install")   (colour-string 223 "  install packages\n"))
-          (format #f "    ~@a ~@a" (colour-string 5 "list,ls")   (colour-string 223 "  list installed packages\n"))
-          (format #f "    ~@a ~@a" (colour-string 5 "search")       (colour-string 223 "    search package or available packages\n"))
-          (format #f "    ~@a ~@a" (colour-string 5 "uninstall")       (colour-string 223 "    uninstall package\n"))
-          (format #f "    ~@a ~@a" (colour-string 5 "update,up") (colour-string 223 "update repository\n"))
+          (make-help "cat"       "    display build file\n")
+          (make-help "clean"      "    clean source directory\n")
+          (make-help "edit"       "     edit recipe file\n")
+          (make-help "help"       "    display this message\n")
+          (make-help "info"       "    information about package\n")
+          (make-help "install"    "  install packages\n")
+          (make-help "list,ls"    "  list installed packages\n")
+          (make-help "search"     "    search package or available packages\n")
+          (make-help "uninstall"  "    uninstall package\n")
+          (make-help "update,up"  "update repository\n")
           )))
+
+(define (make-help cmd mes)
+  (format #f "    ~@a ~@a" (colour-string 5 cmd) (colour-string 223 mes)))
 
 (define (main args)
   (help))
