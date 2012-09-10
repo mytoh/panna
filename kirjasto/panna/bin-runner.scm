@@ -1,32 +1,6 @@
 
 ;; -*- coding: utf-8 -*-
 
-;   .-----.---.-.-----.-----.---.-.
-;   |  _  |  _  |     |     |  _  |
-;   |   __|___._|__|__|__|__|___._|
-;   |_|
-;   pannaa sina olutta
-;
-;   package management with gauche scheme
-;   maybe similar to homebrew, pacman, emerge
-;
-; first set environment variable
-; $OLUTPANIMO, and set $OLUTPANIMO/bin to $PATH
-;
-; terms:
-; kaava    - build file name    - $OLUTPANIMO/kirjasto/kaava/foo
-; riisi    - source directory                      - $HOME/local/git/foo
-; panna    - panna directory, all files here       - $OLUTPANIMO
-; tynnyri  - package install prefix directory      - $OLUTPANIMO/kellari/foo
-; kellari  - all tynnyri goes under this directory - $OLUTPANIMO/kellari
-;
-; commands:
-; install    - function you have to define normally
-; update,up  - update one package or all
-; edit       - edit kaava with $EDITOR or vim
-; list,ls    - list installed package
-;
-
 (define-module panna.bin-runner
   (export
     bin-runner)
@@ -57,7 +31,8 @@
     ((search "S|search")
      (prefix "prefix" )
      (help "h|help")
-     (else (opt . _) (print "Unknown option :" opt) (usage))
+     (else (opt rest cont)
+       (cont "--help"))
      . rest)
     (let* ((komento-directory
              (build-path (sys-getenv "OLUTPANIMO")
