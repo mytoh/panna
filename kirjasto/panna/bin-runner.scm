@@ -32,7 +32,7 @@
      (prefix "prefix" )
      (help "h|help")
      (else (opt rest cont)
-       (cont "--help"))
+       (cont (list "--help")))
      . rest)
     (let* ((komento-directory
              (build-path (sys-getenv "OLUTPANIMO")
