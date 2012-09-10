@@ -32,6 +32,8 @@
      (prefix "prefix" )
      (help "h|help")
      (else (opt rest cont)
+       (print (string-append (colour-string 1 "Unknown option: ")
+                             opt))
        (cont (list "--help")))
      . rest)
     (let* ((komento-directory
