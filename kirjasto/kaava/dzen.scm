@@ -12,5 +12,5 @@
   (system '(gmake))
   (make-directory* (build-path tynnyri "bin"))
   (copy-file "dzen2" (build-path tynnyri "bin/dzen2"))
-  (system `(chmod 755 (build-path tynnyri "bin/dzen2")))
+  (system `(chmod 755 ,(build-path tynnyri "bin/dzen2")))
   )
