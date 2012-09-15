@@ -9,6 +9,8 @@
 
 (define (install tynnyri)
   (with-clang)
-  (system
-    `(env ,(string-append "PREFIX=" tynnyri)
-                  gmake install)))
+  (system '(gmake))
+  (make-directory* (build-path tynnyri "bin"))
+  (copy-file "dzen2" (build-path tynnyri "bin"))
+  (system `(chmod 755 (build-path tynnyri "bin/dzen2")))
+  )
