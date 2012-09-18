@@ -5,6 +5,7 @@
 (use rfc.uri)
 (use panna)
 
+
 (define (link pullo)
   (let* ((kaava  (make-parameter pullo))
          (tynnyri-kansio (make-parameter (build-path (kellari-kansio) (kaava)))))
@@ -94,7 +95,7 @@
            (run-process `(bzr branch ,(subseq repository-url 6) ,pullo) :wait #t
                         :directory (riisi-kansio)))
           ((url-is-svn? repository-url)
-           (run-process `(svn checkout ,repository-url ,pullo) :wait #t
+           (run-process `(svn --non-interactive --trust-server-cert checkout ,repository-url ,pullo) :wait #t
                         :directory (riisi-kansio)))
           ((url-is-cvs? repository-url)
            (run-process `(cvs -qd ,(subseq repository-url 6) co -PA ,pullo)

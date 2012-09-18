@@ -4,7 +4,7 @@
 
 (kaava "rxvt-unicode")
 (homepage "software.schmorp.de/pkg/rxvt-unicode.html")
-(repository "cvs.schmorp.de/schmorpforge")
+(repository "cvs://:pserver:anonymous@cvs.schmorp.de/schmorpforge")
 
 (define (install tynnyri)
   (with-usr-local)
