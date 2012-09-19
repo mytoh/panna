@@ -57,7 +57,7 @@
      (git-update dir))
     ((svn)
      (commands
-       '(svn update)))
+       '(svn --non-interactive --trust-server-cert update)))
     ((bzr)
      (commands
        '(bzr update)))
