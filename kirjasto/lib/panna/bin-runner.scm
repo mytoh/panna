@@ -38,7 +38,7 @@
      . rest)
     (let* ((komento-directory
              (build-path (sys-getenv "OLUTPANIMO")
-                         "kirjasto/panna/komento/"))
+                         "kirjasto/lib/panna/komento/"))
            (kaava (match (length rest)
                     (2 (cdr rest))
                     (1  (if search rest #f))
@@ -51,14 +51,13 @@
                                             komento-directory
                                             (path-swap-extension c "scm")))
                           (run-process `(gosh ,(build-path
-                                                 (sys-getenv "OLUTPANIMO")
-                                                 "kirjasto/panna/komento/"
+                                                 komento-directory
                                                  (path-swap-extension c "scm"))
                                               ,@kaava)
                                        :wait #t)
                           (run-process `(gosh ,(build-path
-                                                 (sys-getenv "OLUTPANIMO")
-                                                 "kirjasto/panna/komento/install.scm")
+                                                 komento-directory
+                                                 "install.scm")
                                               ,@rest)
                                        :wait #t)))
                       (else
@@ -69,8 +68,8 @@
                                                  (path-swap-extension c "scm")))
                                        :wait #t)
                           (run-process `(gosh ,(build-path
-                                                 (sys-getenv "OLUTPANIMO")
-                                                 "kirjasto/panna/komento/install.scm")
+                                                 komento-directory
+                                                 "install.scm")
                                               ,@rest)
                                        :wait #t)))))))
       (if (null-list? (cdr args))
