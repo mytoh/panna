@@ -1,6 +1,6 @@
 #!/usr/bin/env gosh
 
-(use panna.bin-runner)
+(use panna.cli :prefix cli:)
 
 (define (main args)
-  (bin-runner args))
+  (cli:runner args))

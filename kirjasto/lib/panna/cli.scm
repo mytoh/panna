@@ -1,9 +1,9 @@
 
 ;; -*- coding: utf-8 -*-
 
-(define-module panna.bin-runner
+(define-module panna.cli
   (export
-    bin-runner)
+    runner)
   (use gauche.process)
   (use gauche.parseopt)
   (use gauche.parameter)
@@ -11,7 +11,7 @@
   (use file.util)
   (require-extension (srfi 98))
   (use panna))
-(select-module panna.bin-runner)
+(select-module panna.cli)
 
 
 (define (usage)
@@ -26,7 +26,7 @@
           )
         *program-name*))
 
-(define (bin-runner args)
+(define (runner args)
   (let-args (cdr args)
     ((search "S|search")
      (prefix "prefix" )
