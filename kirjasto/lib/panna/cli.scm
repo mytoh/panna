@@ -81,7 +81,7 @@
           (else
             (match (car rest)
               ; command aliases
-              ((or "asentaa" "ase")
+              ((or "i" "asentaa" "ase")
                (panna "install"))
               ("up"
                (panna "update"))
