@@ -46,6 +46,7 @@
   (current-directory dir)
   (display (colour-string (colour-symbol1) ">> "))
   (display (colour-string 114 "Updating "))
+  (flush)
   (display (colour-string (colour-package) (last (string-split dir "/"))))
   (flush)
   (ecase (vcs-directory dir)
