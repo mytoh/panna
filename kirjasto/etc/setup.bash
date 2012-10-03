@@ -1,0 +1,4 @@
+
+
+export PATH=$OLUTPANIMO/bin:$PATH
+export GAUCHE_LOAD_PATH=$OLUTPANIMO/kirjasto/lib:$GAUCHE_LOAD_PATH
