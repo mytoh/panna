@@ -6,6 +6,7 @@
   (use text.tree)
   (require-extension (srfi 98))
   (use panna.väri)
+  (use maali)
   (export
     load-build-file
     commands
@@ -36,7 +37,7 @@
 
 
 (define (url-is-git? url)
-  (or ( #/^git:\/\// url)
+  (or (#/^git:\/\// url)
         (#/\.git$/ url)))
 
 (define (url-is-hg? url)
@@ -46,26 +47,26 @@
         (#/^http:\/\/(.+?\/)\/hg/ url)))
 
 (define (url-is-svn? url)
-  (or ( #/^https?:\/\/(.+?\.)?googlecode\.com\/svn/ url)
-        ( #/^https?:\/\/(.+?\.)?sourceforge\.net\/svnroot/ url)
-        ( #/^svn:\/\// url)
-        ( #/^svn\+http:\/\// url)
-        ( #/^http:\/\/svn.apache.org\/repos/ url)
-        ( #/^http:\/\/svn\./ url)))
+  (or (#/^https?:\/\/(.+?\.)?googlecode\.com\/svn/ url)
+        (#/^https?:\/\/(.+?\.)?sourceforge\.net\/svnroot/ url)
+        (#/^svn:\/\// url)
+        (#/^svn\+http:\/\// url)
+        (#/^http:\/\/svn.apache.org\/repos/ url)
+        (#/^http:\/\/svn\./ url)))
 
 (define (url-is-bzr? url)
-  (cond (( #/^bzr:\/\// url) #t)
+  (cond ((#/^bzr:\/\// url) #t)
         (else #f)))
 
 (define (url-is-fossil? url)
-  (cond (( #/^fossil:\/\// url) #t)
+  (cond ((#/^fossil:\/\// url) #t)
         (else #f)))
 
 (define (url-is-cvs? url)
-  (cond (( #/^cvs:\/\// url) #t)
+  (cond ((#/^cvs:\/\// url) #t)
         (else #f)))
 
 
 (define (message msg)
-  (display (colour-string (colour-symbol1) ":: "))
-  (display (colour-string (colour-message) msg)))
+  (display (paint  ":: " (colour-symbol1)))
+  (display (paint  msg (colour-message))))

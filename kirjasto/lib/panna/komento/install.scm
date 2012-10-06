@@ -4,6 +4,7 @@
 (use file.util)
 (use rfc.uri)
 (use panna)
+(use maali)
 
 
 (define (link pullo)
@@ -12,8 +13,8 @@
     (current-directory (panna-kansio))
 
     (newline)
-    (display (colour-string (colour-symbol1) ":: "))
-    (print (colour-string (colour-message) "symlinking files"))
+    (display (paint  ":: " (colour-symbol1)))
+    (print (paint  "symlinking files" (colour-message)))
     (letrec ((relative-path
                (lambda (p)
                  (fold
@@ -54,9 +55,8 @@
             (begin
               (format (current-output-port)
                       "~a\r"
-                      (string-append (colour-string (colour-message) "linking file ")
-                                     (colour-string (colour-path)
-                                                    (cadr  p)))) 
+                      (string-append (paint  "linking file " (colour-message))
+                                     (paint (cadr  p) (colour-path))))
               (flush)
               (sys-select #f #f #f 90000)
               (sys-symlink (car p)
@@ -67,8 +67,8 @@
 (define (fetch repository-url pullo)
   (let* ((command-message
            (lambda ()
-             (display ( colour-string (colour-symbol1) ":: "))
-             (display ( colour-string (colour-message) "fetching repository"))
+             (display (paint  ":: " (colour-symbol1)))
+             (display (paint  "fetching repository" (colour-message)))
              (newline))))
     (command-message)
     (cond
@@ -113,12 +113,12 @@
   (let* ((tynnyri (build-path (kellari-kansio) pullo))
          (riisi   (build-path (panna-kansio) "riisi" pullo)))
     (load-build-file pullo (kaava-kansio))
-    (display (colour-string (colour-symbol1) ":: "))
-    (display (string-append (colour-string (colour-message) "installing " )
-                            (colour-string (colour-package)  pullo)))
+    (display (paint  ":: " (colour-symbol1)))
+    (display (string-append (paint  "installing "  (colour-message))
+                            (paint   pullo (colour-package))))
     (newline)
     (unless (file-is-directory? riisi)
-      (fetch ( repository) pullo))
+      (fetch (repository) pullo))
     (current-directory riisi)
     (newline)
     (install tynnyri)
@@ -126,8 +126,8 @@
     ;; no error
     (guard (exc (#t (values)))
       (when (procedure? caveats)
-        (display (colour-string (colour-symbol1) ":: "))
-        (display (colour-string (colour-message) "Caveats"))
+        (display (paint  ":: " (colour-symbol1)))
+        (display (paint  "Caveats" (colour-message)))
         (newline)
         (caveats)))
 
@@ -138,7 +138,7 @@
 (define (main args)
   (when (>=  (length (cdr args)) 2)
     (begin
-      (display (colour-string (colour-symbol1) "::"))
+      (display (paint  "::" (colour-symbol1)))
       (display " installing these packages" )
       (newline)
       (for-each (lambda (x)  (display (string-append x " " ))) (cdr args))

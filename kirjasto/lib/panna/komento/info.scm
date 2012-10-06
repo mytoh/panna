@@ -5,16 +5,17 @@
 (use file.util)
 (use rfc.uri)
 (use panna)
+(use maali)
 
 (define (info pullo)
   (let* ((tynnyri (build-path (kellari-kansio) pullo)))
     (load-build-file pullo (kaava-kansio))
-    (display (colour-string (colour-info) "kaava: "))
-    (print (colour-string (colour-info-package)  (kaava)))
-    (display (colour-string (colour-info) "homepage: "))
-    (print (colour-string (colour-info-homepage)  (homepage)))
-    (display (colour-string (colour-info) "repository: "))
-    (print (colour-string (colour-info-repository)  (repository)))
+    (display (paint  "kaava: " (colour-info)))
+    (print (paint    (colour-info-package) (kaava)))
+    (display (paint  "homepage: " (colour-info)))
+    (print (paint   (homepage) (colour-info-homepage)))
+    (display (paint  "repository: " (colour-info)))
+    (print (paint   (repository) (colour-info-repository)))
     ))
 
 

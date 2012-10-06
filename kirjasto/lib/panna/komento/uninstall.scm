@@ -3,13 +3,14 @@
 (use panna)
 (use gauche.parameter)
 (use srfi-1)
+(use maali)
 
 (define (unlink pullo)
   (let* ((kaava  (make-parameter pullo))
          (tynnyri-kansio (make-parameter (build-path (kellari-kansio) (kaava)))))
 
-    (display (colour-string (colour-symbol2) ">>> "))
-    (print (colour-string (colour-message) "unlink files"))
+    (display (paint  ">>> " (colour-symbol2)))
+    (print (paint  "unlink files" (colour-message)))
     (let ((file-list
             (directory-fold
               (tynnyri-kansio)
@@ -29,7 +30,7 @@
 
       ; (for-each
       ; remove-files
-      ; (append-map cdr file-list ))
+      ; (append-map cdr file-list))
       )))
 
 
@@ -38,8 +39,8 @@
   (let* ((kaava  (make-parameter pullo))
          (tynnyri-kansio (make-parameter (build-path (kellari-kansio) (kaava)))))
 
-    (display (colour-string (colour-symbol2) ">>> "))
-    (print (colour-string (colour-message) "uninstalling files"))
+    (display (paint  ">>> " (colour-symbol2)))
+    (print (paint  "uninstalling files" (colour-message)))
     (let ((file-list
             (directory-fold
               (tynnyri-kansio)
@@ -60,8 +61,8 @@
                 (remove-directory* dir)))))
         (receive (a lst) (unzip2 file-list) lst)))
 
-    (display (colour-string (colour-symbol2) ">>> "))
-    (print (colour-string (colour-message) "removing source directory"))
+    (display (paint  ">>> " (colour-symbol2)))
+    (print (paint  "removing source directory" (colour-message)))
     (when (file-is-directory? (build-path (riisi-kansio) (kaava)))
       (remove-directory* (build-path (riisi-kansio) (kaava))))))
 

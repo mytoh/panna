@@ -8,14 +8,15 @@
 (require-extension
   (srfi 1))
 (use panna)
+(use maali)
 
 (define (search pullo)
   (let ((display-packages (lambda (p)
                             (display (path-sans-extension p))
                             (display " "))))
 
-    (display (colour-string (colour-symbol1) ":: "))
-    (display (colour-string (colour-message) "found packages"))
+    (display (paint  ":: " (colour-symbol1)))
+    (display (paint  "found packages" (colour-message)))
     (newline)
     (map display-packages
          (filter
@@ -34,7 +35,7 @@
         '()
         (begin
           (map display-packages
-               (take* lst 4)) 
+               (take* lst 4))
           (newline)
           (loop (drop* lst 4)))))))
 

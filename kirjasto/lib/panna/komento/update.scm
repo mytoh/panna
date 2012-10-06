@@ -6,6 +6,7 @@
 (use gauche.process)
 
 (use panna)
+(use maali)
 
 
 (define (vcs-directory dir)
@@ -29,14 +30,14 @@
        (display "\r")
        (run-process '(tput el1) :wait #t)
        (message "none to update ")
-       (display (colour-string (colour-package) (last (string-split dir "/"))))
+       (display (paint  (last (string-split dir "/")) (colour-package)))
        (newline)
        (flush)
        (sys-select #f #f #f 100000))
       (else
         (newline)
         (message "Updated ")
-        (display (colour-string 194 (last (string-split dir "/"))))
+        (display (paint (last (string-split dir "/") 194)))
         (newline)
         (print pout)
         (flush)))))
@@ -44,11 +45,11 @@
 
 (define (update-repo dir)
   (current-directory dir)
-  (display (colour-string (colour-symbol1) ">> "))
+  (display (paint  ">> " (colour-symbol1)))
   (flush)
-  (display (colour-string 114 "Updating "))
+  (display (paint "Updating " 114))
   (flush)
-  (display (colour-string (colour-package) (last (string-split dir "/"))))
+  (display (paint  (last (string-split dir "/")) (colour-package)))
   (flush)
   (newline)
   (ecase (vcs-directory dir)

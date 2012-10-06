@@ -7,6 +7,7 @@
 (use rfc.uri)
 (use srfi-13)
 (use panna)
+(use maali)
 
 (define (help)
   (exit 0
@@ -26,7 +27,7 @@
           )))
 
 (define (desc cmd mes)
-  (format #f "    ~@a ~@a" (colour-string 5 (string-pad-right cmd 9)) (colour-string 223 mes)))
+  (format #f "    ~@a ~@a" (paint (string-pad-right cmd 9) 5 ) (paint mes 223 )))
 
 (define (main args)
   (help))

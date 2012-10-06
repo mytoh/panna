@@ -4,6 +4,7 @@
   (use gauche.parameter)
   (use gauche.process)
   (use panna)
+  (use maali)
   (require-extension
     (srfi 13))
   (export
@@ -61,11 +62,11 @@
 (define-syntax system
   ; run processes
   (syntax-rules ()
-    ((_ c )
+    ((_ c)
      (begin
        ; (display "[38;5;99m>>> [0m")
-       (display (colour-string (colour-symbol2) ">>> "))
-       (for-each (lambda (s) (display (colour-string (colour-command) #`",s "))) c)
+       (display (paint  ">>> " (colour-symbol2)))
+       (for-each (lambda (s) (display (paint  #`",s " (colour-command)))) c)
        (newline)
        (let* ((p (run-process c :wait #t))
               (status (process-exit-status p)))

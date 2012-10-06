@@ -2,14 +2,15 @@
 (use panna)
 (use gauche.parameter)
 (use srfi-1)
+(use maali)
 
 (define (unlink pullo)
   (let* ((kaava  (make-parameter pullo))
          (tynnyri-kansio (make-parameter (build-path (kellari-kansio) (kaava)))))
 
     (newline)
-    (display (colour-string (colour-symbol2) ">>> "))
-    (print (colour-string (colour-message) "unlink files"))
+    (display (paint  ">>> " (colour-symbol2)))
+    (print (paint  "unlink files" (colour-message)))
     (let ((file-list
             (directory-fold
               (tynnyri-kansio)
@@ -29,7 +30,7 @@
 
       ; (for-each
       ; remove-files
-      ; (append-map cdr file-list ))
+      ; (append-map cdr file-list))
       )))
 
 (define (main args)

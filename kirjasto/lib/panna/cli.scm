@@ -10,6 +10,7 @@
   (use util.match)
   (use file.util)
   (require-extension (srfi 98))
+  (use maali)
   (use panna))
 (select-module panna.cli)
 
@@ -19,10 +20,10 @@
         (string-append
           "usage: ~a <command> <package>\n"
           "\n"
-          (format #f "    ~@a ~@a" (colour-string 15 "install")   "- install packages\n")
-          (format #f "    ~@a ~@a" (colour-string 15 "update,up") "- update repository\n")
-          (format #f "    ~@a ~@a" (colour-string 15 "edit")      "- edit recipe file\n")
-          (format #f "    ~@a ~@a" (colour-string 15 "list,ls")   "- list installed packages\n")
+          (format #f "    ~@a ~@a" (paint "install" 15 )   "- install packages\n")
+          (format #f "    ~@a ~@a" (paint "update,up" 15 ) "- update repository\n")
+          (format #f "    ~@a ~@a" (paint "edit" 15 )      "- edit recipe file\n")
+          (format #f "    ~@a ~@a" (paint "list,ls" 15 )   "- list installed packages\n")
           )
         *program-name*))
 
@@ -32,7 +33,7 @@
      (prefix "prefix" )
      (help "h|help")
      (else (opt rest cont)
-       (print (string-append (colour-string 1 "Unknown option: ")
+       (print (string-append (paint "Unknown option: " 1 )
                              opt))
        (cont (list "--help")))
      . rest)
