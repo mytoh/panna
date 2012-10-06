@@ -48,9 +48,9 @@
   (flush)
   (display (colour-string 114 "Updating "))
   (flush)
-  (newline)
   (display (colour-string (colour-package) (last (string-split dir "/"))))
   (flush)
+  (newline)
   (ecase (vcs-directory dir)
     ((hg)
      (commands
