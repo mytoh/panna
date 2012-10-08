@@ -37,7 +37,7 @@
       (else
         (newline)
         (message "Updated ")
-        (display (paint (last (string-split dir "/") 194)))
+        (display (paint (last (string-split dir "/")) 194))
         (newline)
         (print pout)
         (flush)))))
