@@ -38,6 +38,7 @@
         (newline)
         (message "Updated ")
         (display (paint (last (string-split dir "/")) 194))
+        (flush)
         (newline)
         (print pout)
         (flush)))))
@@ -51,7 +52,6 @@
   (flush)
   (display (paint  (last (string-split dir "/")) (colour-package)))
   (flush)
-  (newline)
   (ecase (vcs-directory dir)
     ((hg)
      (commands
