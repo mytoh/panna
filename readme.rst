@@ -23,7 +23,6 @@ setting up paths
 Panna
 -----
 see ``$OLUTPANIMO/kirjasto/kaava`` and
-
 install packages
 ::
 
