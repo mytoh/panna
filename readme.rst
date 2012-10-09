@@ -4,7 +4,7 @@ panna
 software package manager
 
 Install
--------
+--------
 
 first install gauche scheme
 and
@@ -12,7 +12,7 @@ and
     gosh install.scm
 
 Setting
--------
+--------
 
 setting up paths
 ::
@@ -21,7 +21,7 @@ setting up paths
     export PATH=$OLUTPANIMO/bin:$PATH
 
 Panna
------
+------
 
 see ``$OLUTPANIMO/kirjasto/kaava`` and
 
