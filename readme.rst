@@ -1,3 +1,4 @@
+
 panna
 =====
 software package manager
@@ -25,7 +26,9 @@ see ``$OLUTPANIMO/kirjasto/kaava`` and
 
 install packages
 ::
+
     panna install vim
+
 
 
 
