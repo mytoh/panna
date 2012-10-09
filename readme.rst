@@ -1,10 +1,12 @@
 
 panna
 =====
+
 software package manager
 
 Install
 -------
+
 first install gauche scheme
 and
 ::
@@ -13,6 +15,7 @@ and
 
 Setting
 -------
+
 setting up paths
 ::
 
@@ -22,6 +25,7 @@ setting up paths
 
 Panna
 -----
+
 see ``$OLUTPANIMO/kirjasto/kaava`` and
 install packages
 ::
