@@ -9,6 +9,7 @@
   (srfi 1))
 (use panna)
 (use maali)
+(use kirjasto.pääte)
 
 (define (search pullo)
   (let ((display-packages (lambda (p)
@@ -25,19 +26,12 @@
     (newline)))
 
 (define (search-all)
-  (let ((display-packages (lambda (p)
+  (let ((pretty-packages (lambda (p)
                             (display (path-sans-extension p))
-                            (display "\t")))
-        (file-lst (directory-list (kaava-kansio) :children? #t)))
-
-    (let loop ((lst file-lst))
-      (if (null? lst)
-        '()
-        (begin
-          (map display-packages
-               (take* lst 4))
-          (newline)
-          (loop (drop* lst 4)))))))
+                            ))
+        (file-lst (map pretty-packages (directory-list (kaava-kansio) :children? #t))))
+    (puts-columns file-lst)
+    ))
 
 
 (define (main args)
