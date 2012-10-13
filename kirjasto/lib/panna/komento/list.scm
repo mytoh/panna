@@ -10,7 +10,7 @@
   (display (paint  ":: " (colour-symbol1)))
   (display (paint  "installed packages" (colour-message)))
   (newline)
-  (puts-coloumns (directory-list (kellari-kansio) :children? #t)))
+  (puts-columns (directory-list (kellari-kansio) :children? #t)))
 
 (define (list-package-contents kaava)
   (let* ((tynnyri (make-parameter (build-path (kellari-kansio) kaava))))
