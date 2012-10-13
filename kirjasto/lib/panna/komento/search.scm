@@ -26,7 +26,7 @@
     (newline)))
 
 (define (search-all)
-  (let ((pretty-packages (lambda (p)
+  (let* ((pretty-packages (lambda (p)
                             (display (path-sans-extension p))
                             ))
         (file-lst (map pretty-packages (directory-list (kaava-kansio) :children? #t))))
