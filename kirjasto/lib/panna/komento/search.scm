@@ -10,6 +10,7 @@
 (use panna)
 (use maali)
 (use kirjasto.pääte)
+(use kirjain)
 
 (define (search pullo)
   (let ((display-packages (lambda (p)
@@ -26,10 +27,7 @@
     (newline)))
 
 (define (search-all)
-  (let* ((pretty-packages (lambda (p)
-                            (display (path-sans-extension p))
-                            ))
-        (file-lst (map pretty-packages (directory-list (kaava-kansio) :children? #t))))
+  (let* ((file-lst (map path-sans-extension (directory-list (kaava-kansio) :children? #t))))
     (puts-columns file-lst)
     ))
 
