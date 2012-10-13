@@ -4,13 +4,13 @@
 (use gauche.parameter)
 (use panna)
 (use maali)
+(use kirjasto.pääte)
 
 (define (list-packages)
   (display (paint  ":: " (colour-symbol1)))
   (display (paint  "installed packages" (colour-message)))
   (newline)
-  (map print
-       (directory-list (kellari-kansio) :children? #t)))
+  (puts-coloumns (directory-list (kellari-kansio) :children? #t)))
 
 (define (list-package-contents kaava)
   (let* ((tynnyri (make-parameter (build-path (kellari-kansio) kaava))))
