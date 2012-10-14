@@ -68,7 +68,7 @@
        (display (paint  ">>> " (colour-symbol2)))
        (for-each (lambda (s) (display (paint  #`",s " (colour-command)))) c)
        (newline)
-       (let* ((p (run-process c :wait #t))
+       (let* ((p (run-process c :wait #t :output :null))
               (status (process-exit-status p)))
          (when (not  (zero? status))
            (error #`"command fail with status ,status" c)))))

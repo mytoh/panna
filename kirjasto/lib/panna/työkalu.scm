@@ -32,7 +32,7 @@
   (syntax-rules ()
     ((_ c1 ...)
      (begin
-       (run-process c1 :wait #t)
+       (run-process c1 :output :null :wait #t)
        ...))))
 
 

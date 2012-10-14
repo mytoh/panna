@@ -77,25 +77,37 @@
          ((hg) (cond
                  ((> (length repository-url) 2)
                   (run-process `(hg clone ,@(caddr repository-url) ,(car repository-url) ,pullo)
-                               :wait #t :directory (riisi-kansio)))
+                               :wait #t
+                               :output :null
+                               :directory (riisi-kansio)))
                  (else
                    (run-process `(hg clone ,(car repository-url) ,pullo)
-                                :wait #t :directory (riisi-kansio)))))
+                                :wait #t
+                                :output :null
+                                :directory (riisi-kansio)))))
          (else
            (print "this repository url is not supported"))))
       (else
         (cond
           ((url-is-git? repository-url)
-           (run-process `(git clone ,repository-url ,pullo) :wait #t
+           (run-process `(git clone ,repository-url ,pullo)
+                        :wait #t
+                        :output :null
                         :directory (riisi-kansio)))
           ((url-is-hg? repository-url)
-           (run-process `(hg clone ,repository-url ,pullo) :wait #t
+           (run-process `(hg clone ,repository-url ,pullo)
+                        :wait #t
+                        :output :null
                         :directory (riisi-kansio)))
           ((url-is-bzr? repository-url)
-           (run-process `(bzr branch ,(subseq repository-url 6) ,pullo) :wait #t
+           (run-process `(bzr branch ,(subseq repository-url 6) ,pullo)
+                        :wait #t
+                        :output :null
                         :directory (riisi-kansio)))
           ((url-is-svn? repository-url)
-           (run-process `(svn --non-interactive --trust-server-cert checkout ,repository-url ,pullo) :wait #t
+           (run-process `(svn --non-interactive --trust-server-cert checkout ,repository-url ,pullo)
+                        :wait #t
+                        :output :null
                         :directory (riisi-kansio)))
           ((url-is-cvs? repository-url)
            (run-process `(cvs -qd ,(subseq repository-url 6) co -PA ,pullo)
