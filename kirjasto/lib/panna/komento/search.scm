@@ -1,16 +1,19 @@
 
+;; -*- coding: utf-8 -*-
+
 (use gauche.parameter)
-(use gauche.process)
-(use gauche.sequence)
-(use file.util)
-(use rfc.uri)
-(use util.list)
-(require-extension
-  (srfi 1))
-(use panna)
-(use maali)
-(use kirjasto.pääte)
-(use kirjain)
+  (use gauche.process)
+  (use gauche.sequence)
+  (use file.util)
+  (use rfc.uri)
+  (use util.list)
+  (require-extension
+    (srfi 1))
+  (use panna)
+  (use maali)
+  (use kirjasto.pääte)
+  (use kirjain)
+
 
 (define (search pullo)
   (let ((display-packages (lambda (p)
