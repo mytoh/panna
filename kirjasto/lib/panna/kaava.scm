@@ -27,12 +27,16 @@
 (define homepage (make-parameter "unknown"))
 (define repository (make-parameter "unknown"))
 
+(define (setenv-command name command)
+  (when (find-file-in-paths command)
+    (sys-setenv name command #t)))
+
 (define (with-clang)
-  (sys-setenv "CC" "clang" #t)
-  (sys-setenv "CPP" "clang-cpp" #t)
-  (sys-setenv "CXX" "clang++" #t)
-  (sys-setenv "CXXCPP" "clang-cpp" #t)
-  (sys-setenv "OBJC" "clang" #t)
+  (setenv-command "CC" "clang" )
+  (setenv-command "CPP" "clang-cpp")
+  (setenv-command "CXX" "clang++")
+  (setenv-command "CXXCPP" "clang-cpp")
+  (setenv-command "OBJC" "clang")
 
   (sys-unsetenv "NO_WERROR")
   (sys-unsetenv "WERROR")
