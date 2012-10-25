@@ -24,6 +24,11 @@
                                                 (cons path seed)))))))
 
 (define (main args)
-  (if (<= 2 (length args))
-    (list-package-contents (cadr args))
-    (list-packages)))
+  (cond
+    ((not (file-exists? (kellari-kansio)))
+     (print (paint ":: " (colour-symbol1))
+            "no package found"))
+    (else
+      (if (<= 2 (length args))
+        (list-package-contents (cadr args))
+        (list-packages))     )))
