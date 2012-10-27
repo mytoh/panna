@@ -9,7 +9,7 @@
   (with-panna-library)
   (with-clang)
   (system
-    '(./autogen.sh)
+    '(env CC=clang CXX=clang++ ./autogen.sh)
     `(./configure ,(string-append "--prefix=" tynnyri)
                   --enable-outputs
                   --enable-visualizer
