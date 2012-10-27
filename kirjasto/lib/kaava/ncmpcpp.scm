@@ -6,6 +6,7 @@
 
 
 (define (install tynnyri)
+  (with-clang)
   (with-panna-library)
   (system
     '(./autogen.sh)
