@@ -11,7 +11,6 @@
   (let* ((kaava  (make-parameter pullo))
          (tynnyri-kansio (make-parameter (build-path (kellari-kansio) (kaava)))))
     (current-directory (panna-kansio))
-
     (newline)
     (display (paint  ":: " (colour-symbol1)))
     (print (paint  "symlinking files" (colour-message)))
@@ -62,7 +61,6 @@
               (sys-symlink (car p)
                            (cadr p)))))
         file-list))))
-
 
 (define (fetch repository-url pullo)
   (let* ((command-message
