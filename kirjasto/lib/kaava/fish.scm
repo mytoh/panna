@@ -1,6 +1,6 @@
 (use panna.kaava)
 
-(kaava  "fish-shell")
+(kaava  "fish")
 (homepage  "github.com/fish-shell/fish-shell")
 (repository   "git://github.com/fish-shell/fish-shell")
 
