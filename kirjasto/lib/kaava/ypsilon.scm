@@ -10,14 +10,12 @@
 (define (install tynnyri)
   (cond
     ((is-freebsd)
-     (with-clang)
      (system
-       `(gmake ,(string-append "PREFIX=" tynnyri))
-       `(gmake ,(string-append "PREFIX=" tynnyri) install)
-       '(gmake clean)
-       '(gmake distclean)))
+       `(make ,(string-append "PREFIX=" tynnyri))
+       `(make ,(string-append "PREFIX=" tynnyri) install)
+       '(make clean)
+       '(make distclean)))
     (else
-      (with-clang)
       (system
         `(make ,(string-append "PREFIX=" tynnyri))
         `(make ,(string-append "PREFIX=" tynnyri) install)
