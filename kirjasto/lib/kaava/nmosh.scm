@@ -16,13 +16,11 @@
      (system
        `("./configure" ,(string-append "--prefix=" prefix))
        '(make)
-       ; '(make check)
        '(make install)))
     (else
       (system
         '("./gen-git-build.sh")
         `("./configure" ,(string-append "--prefix=" prefix))
         '(make)
-        '(make check)
         '(make install)))))
 
