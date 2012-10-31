@@ -6,19 +6,19 @@
 (homepage "mosh.monaos.org")
 (repository   "git://github.com/okuoku/mosh" )
 
-(cond
-  ; freebsd
-  ((is-freebsd)
-   (define (install prefix)
+
+(define (install prefix)
+  (cond
+    ; freebsd
+    ((is-freebsd)
      (with-usr-local)
      (system '("./gen-git-build.sh"))
      (system
        `("./configure" ,(string-append "--prefix=" prefix))
        '(make)
-       '(make check)
-       '(make install))))
-  (else
-    (define (install prefix)
+       ; '(make check)
+       '(make install)))
+    (else
       (system
         '("./gen-git-build.sh")
         `("./configure" ,(string-append "--prefix=" prefix))
