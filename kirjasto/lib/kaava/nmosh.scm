@@ -18,7 +18,7 @@
        '(make check)
        '(make install))))
   (else
-    (define (install tynnyri)
+    (define (install prefix)
       (system
         '("./gen-git-build.sh")
         `("./configure" ,(string-append "--prefix=" prefix))
