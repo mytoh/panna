@@ -14,9 +14,9 @@
      (system
        '(./gen-git-build.sh)
        `(./configure ,(string-append "--prefix=" prefix))
-       '(gmake)
-       '(gmake check)
-       '(gmake install)))
+       '(make)
+       '(make check)
+       '(make install)))
 
     (else
       (with-clang)
