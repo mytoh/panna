@@ -11,7 +11,7 @@
     ; freebsd
     ((is-freebsd)
      (system
-       '(./autogen.sh)
+       '(sh ./autogen.sh)
        '(mkdir =build)
        '(cd =build)
        `("../configure" ,(string-append "--prefix=" tynnyri))
@@ -20,7 +20,7 @@
     (else
       (with-clang)
       (system
-        '(./autogen.sh)
+        '(sh ./autogen.sh)
         '(mkdir =build)
         '(cd =build)
         `("../configure" ,(string-append "--prefix=" tynnyri))
