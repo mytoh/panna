@@ -14,7 +14,7 @@
      (with-usr-local)
      (system '("./gen-git-build.sh"))
      (system
-       `("../configure" ,(string-append "--prefix=" prefix))
+       `("./configure" ,(string-append "--prefix=" prefix))
        '(gmake)
        '(gmake check)
        '(gmake install))))
