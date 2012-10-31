@@ -12,15 +12,15 @@
     ((is-freebsd)
      (with-clang)
      (system
-       '(gmake)
-       '(gmake install)
+       `(gmake ,(string-append "PREFIX=" tynnyri))
+       `(gmake install ,(string-append "PREFIX=" tynnyri))
        '(gmake clean)
        '(gmake distclean)))
     (else
-     (with-clang)
+      (with-clang)
       (system
-        '(make)
-        '(make install)
+        `(make ,(string-append "PREFIX=" tynnyri))
+        `(make install ,(string-append "PREFIX=" tynnyri))
         '(make clean)
         '(make distclean))
       )))
