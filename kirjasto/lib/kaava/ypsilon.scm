@@ -13,14 +13,14 @@
      (with-clang)
      (system
        `(gmake ,(string-append "PREFIX=" tynnyri))
-       `(gmake install ,(string-append "PREFIX=" tynnyri))
+       `(gmake ,(string-append "PREFIX=" tynnyri) install)
        '(gmake clean)
        '(gmake distclean)))
     (else
       (with-clang)
       (system
         `(make ,(string-append "PREFIX=" tynnyri))
-        `(make install ,(string-append "PREFIX=" tynnyri))
+        `(make ,(string-append "PREFIX=" tynnyri) install)
         '(make clean)
         '(make distclean))
       )))
