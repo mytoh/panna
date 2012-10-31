@@ -11,18 +11,19 @@
     ; freebsd
     ((is-freebsd)
      (system
-       '(sh ./BUILD-THE-INFRASTRUCTURE.sh)
+       '(./autogen.sh)
        '(mkdir =build)
        '(cd =build)
        `("./configure" ,(string-append "--prefix=" tynnyri))
        '(gmake)
        '(gmake install)))
-
     (else
-      (sys-putenv (string-append "PREFIX=" tynnyri))
       (with-clang)
       (system
-        '(make clean)
+        '(./autogen.sh)
+        '(mkdir =build)
+        '(cd =build)
+        `("./configure" ,(string-append "--prefix=" tynnyri))
         '(make)
-        '(make install))))) 
+        '(make install)))))
 
