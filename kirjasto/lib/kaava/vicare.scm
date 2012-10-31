@@ -14,7 +14,7 @@
        '(./autogen.sh)
        '(mkdir =build)
        '(cd =build)
-       `("./configure" ,(string-append "--prefix=" tynnyri))
+       `("../configure" ,(string-append "--prefix=" tynnyri))
        '(gmake)
        '(gmake install)))
     (else
@@ -23,7 +23,7 @@
         '(./autogen.sh)
         '(mkdir =build)
         '(cd =build)
-        `("./configure" ,(string-append "--prefix=" tynnyri))
+        `("../configure" ,(string-append "--prefix=" tynnyri))
         '(make)
         '(make install)))))
 
