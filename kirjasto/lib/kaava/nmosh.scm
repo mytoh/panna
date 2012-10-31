@@ -22,8 +22,11 @@
     (define (install tynnyri)
       (sys-putenv (string-append "PREFIX=" tynnyri))
       (with-clang)
+      (system '("./gen-git-build.sh"))
+      system
+      `("./configure" ,(string-append "--prefix=" prefix))
       (system
-        '(make clean)
         '(make)
+        '(make check)
         '(make install)))))
 
