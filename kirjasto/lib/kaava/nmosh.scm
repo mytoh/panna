@@ -13,15 +13,11 @@
      (with-clang)
      (with-usr-local)
      (system '("./gen-git-build.sh"))
-     (make-directory* "build")
-     (current-directory "build")
      (system
-       `("../configure" ,(string-append "--prefix=" prefix) )
+       `("../configure" ,(string-append "--prefix=" prefix))
        '(gmake)
        '(gmake check)
-       '(gmake install))
-     (remove-directory* "build")))
-
+       '(gmake install))))
   (else
     (define (install tynnyri)
       (sys-putenv (string-append "PREFIX=" tynnyri))
