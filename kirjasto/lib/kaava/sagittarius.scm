@@ -9,7 +9,7 @@
 
 (define (install prefix)
   (system
-    '(./autogen.sh)
+    '(sh ./autogen.sh)
     `(./configure ,(string-append "--prefix=" prefix)))  
   (make-directory* "build")
   (current-directory "build")
