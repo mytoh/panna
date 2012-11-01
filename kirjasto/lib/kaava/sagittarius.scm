@@ -12,7 +12,10 @@
   (current-directory "build")
   (system
     '(cmake ..)
-    '(make)
+    '(gmake)
+    '(gmake test)
+    '(gmake doc)
+    '(gmake install)
     )
   )
 
