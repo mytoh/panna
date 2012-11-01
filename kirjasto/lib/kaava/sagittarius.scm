@@ -7,7 +7,10 @@
 (homepage "codes.google.com/p/sagittarius-scheme")
 (repository '("https://code.google.com/p/sagittarius-scheme" hg))
 
-(define (install tynnyri)
+(define (install prefix)
+  (system
+    '(./autogen.sh)
+    `(./configure ,(string-append "--prefix=" prefix)))  
   (make-directory* "build")
   (current-directory "build")
   (system
@@ -15,7 +18,5 @@
     '(gmake)
     '(gmake test)
     '(gmake doc)
-    '(gmake install)
-    )
-  )
+    '(gmake install)))
 
