@@ -88,7 +88,7 @@
       (else
         (cond
           ((url-is-git? repository-url)
-           (run-process `(git clone ,repository-url ,pullo)
+           (run-process `(git clone --depth 1 ,repository-url ,pullo)
                         :wait #t
                         :output :null
                         :directory (riisi-kansio)))
