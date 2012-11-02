@@ -10,6 +10,7 @@
   (cond
     ; freebsd
     ((is-freebsd)
+     (with-usr-local)
      (system '(sh ./autogen.sh))
      (make-directory* "=build")
      (current-directory "=build")
