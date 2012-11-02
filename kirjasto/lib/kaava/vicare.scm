@@ -10,10 +10,10 @@
   (cond
     ; freebsd
     ((is-freebsd)
+     (system '(sh ./autogen.sh))
+     (make-directory* "=build")
+     (current-directory "=build")
      (system
-       '(sh ./autogen.sh)
-       '(mkdir =build)
-       '(cd =build)
        `("../configure" ,(string-append "--prefix=" tynnyri))
        '(gmake)
        '(gmake install)))
