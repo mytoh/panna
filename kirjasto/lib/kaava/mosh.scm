@@ -1,27 +1,26 @@
 
+
 (use panna.kaava)
 
 (kaava   "mosh")
-(homepage "mosh.mit.edu/")
-(repository   "git://github.com/higepon/mosh" )
+(homepage "mosh.monaos.org")
+(repository   "git://github.com/okuoku/mosh" )
+
 
 (define (install prefix)
   (cond
     ; freebsd
     ((is-freebsd)
-     (with-clang)
      (with-usr-local)
+     (system '("./gen-git-build.sh"))
      (system
-       '(./gen-git-build.sh)
-       `(./configure ,(string-append "--prefix=" prefix))
+       `("./configure" ,(string-append "--prefix=" prefix))
        '(make)
        '(make install)))
-
     (else
-      (with-clang)
       (system
-        '(./gen-git-build.sh)
-        `(./configure ,(string-append "--prefix=" prefix))
+        '("./gen-git-build.sh")
+        `("./configure" ,(string-append "--prefix=" prefix))
         '(make)
         '(make install)))))
 
