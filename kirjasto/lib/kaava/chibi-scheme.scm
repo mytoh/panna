@@ -4,7 +4,7 @@
 
 (kaava "chibi-scheme")
 (homepage "synthcode.com/wiki/chibi-scheme")
-(repository "https://chibi-scheme.googlecode.com/hg")
+(repository '("https://code.google.com/p/chibi-scheme"  hg))
 
 (define (install tynnyri)
   (with-clang)
