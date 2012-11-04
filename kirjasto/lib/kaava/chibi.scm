@@ -12,7 +12,7 @@
   (system
     '(gmake)
     '(gmake test)
-    `(env (string-append  "PREFIX=" tynnyri) make install)
+    `(env (string-append  "PREFIX=" tynnyri) gmake install)
     '(gmake clean)
     '(gmake distclean)
     ))
