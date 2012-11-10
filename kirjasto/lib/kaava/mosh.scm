@@ -23,7 +23,7 @@
         `("./configure" ,(string-append "--prefix=" prefix)
           ,(string-append "CPPFLAGS=-I/Users/" (sys-getenv "USER")
                                               "/local/homebrew/include")
-          ,(string-append "LDFLAGS-L/Users/" (sys-getenv "USER")
+          ,(string-append "LDFLAGS=-L/Users/" (sys-getenv "USER")
                          "/local/homebrew/lib")
           )
         '(make)
