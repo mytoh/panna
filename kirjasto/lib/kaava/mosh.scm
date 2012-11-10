@@ -18,6 +18,12 @@
        '(make)
        '(make install)))
     (else
+     (add-environment-variable "CPPFLAGS"
+                               (string-append "-I/Users/" (sys-getenv "USER")
+                                              "/local/homebrew/include"))
+     (add-environment-variable "LDFLAGS"
+                               (string-append "-I/Users/" (sys-getenv "USER")
+                                              "/local/homebrew/lib"))
       (system
         '("./gen-git-build.sh")
         `("./configure" ,(string-append "--prefix=" prefix))
