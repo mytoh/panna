@@ -21,9 +21,9 @@
       (system
         '("./gen-git-build.sh")
         `("./configure" ,(string-append "--prefix=" prefix)
-          ,(string-append "-I/Users/" (sys-getenv "USER")
+          ,(string-append "CPPFLAGS=-I/Users/" (sys-getenv "USER")
                                               "/local/homebrew/include")
-          ,(string-append "-I/Users/" (sys-getenv "USER")
+          ,(string-append "LDFLAGS-L/Users/" (sys-getenv "USER")
                          "/local/homebrew/lib")
           )
         '(make)
