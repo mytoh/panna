@@ -9,7 +9,6 @@
 ( define (install tynnyri)  
          ( cond 
            ((is-freebsd)
-            (with-clang)
             (system
               '(./autogen.sh)
               `(./configure ,(string-append "--prefix=" tynnyri))

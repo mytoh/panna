@@ -7,7 +7,6 @@
 (repository   "git://github.com/ggreer/the_silver_searcher" )
 
 (define (install prefix)
-  (with-clang)
   (with-usr-local)
   (system
     '(./build.sh)

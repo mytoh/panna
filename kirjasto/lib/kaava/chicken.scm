@@ -9,7 +9,6 @@
 (cond
   ((is-freebsd)
    (define (install tynnyri)
-     (with-clang)
      (system
        `(gmake PLATFORM=bsd spotless)
        `(gmake PLATFORM=bsd ,(string-append "PREFIX=" tynnyri)

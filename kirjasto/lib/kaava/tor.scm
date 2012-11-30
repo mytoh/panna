@@ -12,7 +12,6 @@
   (add-environment-variable
     "LDFLAGS" "-L/usr/local/lib/event2")
   (with-usr-local)
-  (with-clang)
   (system
     '(./autogen.sh)
     `("./configure" ,(string-append "--prefix=" tynnyri)

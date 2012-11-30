@@ -7,7 +7,6 @@
 (repository "git://git.savannah.nongnu.org/ranger.git")
 
 (define (install tynnyri)
-  (with-clang)
   (system
     `(python setup.py install ,(string-append "--prefix=" tynnyri))
     ))

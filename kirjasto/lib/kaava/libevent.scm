@@ -7,7 +7,6 @@
 (repository "git://github.com/libevent/libevent")
 
 (define (install tynnyri)
-  (with-clang)
   (system
     '(./autogen.sh)
     `(./configure ,(string-append "--prefix=" tynnyri))

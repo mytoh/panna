@@ -6,7 +6,6 @@
 
 (define (install tynnyri)
   (with-usr-local)
-  (with-clang)
   (system
     '(autoconf)
     `(./configure ,(string-append "--prefix=" tynnyri))

@@ -7,9 +7,8 @@
 
 (define (install tynnyri)
   (with-panna-library)
-  (with-clang)
   (system
-    '(env CC=clang CXX=clang++ ./autogen.sh)
+    '(./autogen.sh)
     `(./configure ,(string-append "--prefix=" tynnyri)
                   --enable-outputs
                   --enable-visualizer

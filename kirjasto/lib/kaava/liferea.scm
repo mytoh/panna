@@ -6,7 +6,6 @@
 (repository   "git://liferea.git.sourceforge.net/gitroot/liferea/liferea")
 
 (define (install tynnyri)
-  (with-clang)
   (system
   '(gmake clean)
   '(gmake distclean)

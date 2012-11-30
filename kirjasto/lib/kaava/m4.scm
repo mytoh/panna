@@ -8,7 +8,6 @@
 
 
 (define (install tynnyri)
-  (with-clang)
   (system
     '(./bootstrap)
     `(./configure ,(string-append "--prefix=" tynnyri))

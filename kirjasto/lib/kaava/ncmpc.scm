@@ -7,7 +7,6 @@
 (repository "git://git.musicpd.org/master/ncmpc.git")
 
 (define (install tynnyri)
-  (with-clang)
   (system
     `("./autogen.sh"
       ,(string-append "--prefix=" tynnyri)

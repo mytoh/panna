@@ -9,13 +9,11 @@
 (define (install tynnyri)
   (cond
     ((is-freebsd)
-     (with-clang)
      (system
        '(env "CFALGS=-I/usr/local/include/X11" "LDFLAGS=-L/usr/local/lib"
              ,(string-append "PREFIX=" tynnyri) gmake)
        '(gmake install)))
     (else
-     (with-clang)
      (system
        '(env "CFALGS=-I/usr/local/include/X11" "LDFLAGS=-L/usr/local/lib"
              ,(string-append "PREFIX=" tynnyri) make)

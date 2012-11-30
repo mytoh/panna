@@ -7,7 +7,6 @@
 (repository '("http://selenic.com/hg" hg))
 
 (define (install tynnyri)
-  (with-clang)
   (system
     `(python setup.py install ,(string-append "--install-base=" tynnyri)
              ,(string-append "--install-platbase=" (sys-getenv "OLUTPANIMO"))) 

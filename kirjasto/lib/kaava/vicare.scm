@@ -10,7 +10,6 @@
   (cond
     ; freebsd
     ((is-freebsd)
-     (with-clang)
      (with-usr-local)
      (system '(sh ./autogen.sh))
      (make-directory* "=build")
@@ -20,7 +19,6 @@
        '(gmake)
        '(gmake install)))
     (else
-      (with-clang)
       (system
         '(sh ./autogen.sh)
         '(mkdir =build)

@@ -8,7 +8,6 @@
 (repository     "git://github.com/dss-project/dswm")
 
 (define (install tynnyri)
-  (with-clang)
   (system
     '(make clean)
     '(make distclean)

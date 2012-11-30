@@ -9,7 +9,6 @@
                      ("-b" "2.7")))
 
 (define (install tynnyri)
-  (with-clang)
   (system
     `(./configure ,(string-append "--prefix=" tynnyri))
     '(make)

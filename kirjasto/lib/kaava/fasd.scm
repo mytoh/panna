@@ -8,7 +8,6 @@
 (repository     "git://github.com/clvv/fasd")
 
 (define (install tynnyri)
-  (with-clang)
   (system
     `(env ,(string-append "PREFIX=" tynnyri)
                   make install)))

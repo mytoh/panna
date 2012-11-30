@@ -7,7 +7,6 @@
 (define (install prefix)
   (cond
     ((is-freebsd)
-     (with-clang)
      (add-environment-variable
        "LIBS" "-liconv")
      (with-usr-local)

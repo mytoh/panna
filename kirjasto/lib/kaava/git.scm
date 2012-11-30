@@ -8,7 +8,6 @@
 (define (install tynnyri)
   (cond 
     ((is-freebsd)
-     (with-clang)
      (system
        `(gmake ,(string-append "prefix=" tynnyri))
        `(gmake ,(string-append "prefix=" tynnyri) install)

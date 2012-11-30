@@ -10,14 +10,12 @@
   (cond
     ; freebsd
     ((is-freebsd)
-     ; (with-clang)
      (system
        '(autoreconf "-fi")
        `("./configure" ,(string-append "--prefix=" tynnyri))
        '(gmake)
        '(gmake install)
        '(gmake clean)))
-
     (else
       (sys-putenv (string-append "PREFIX=" tynnyri))
       (with-clang)

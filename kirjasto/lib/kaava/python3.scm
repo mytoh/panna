@@ -8,7 +8,6 @@
 (repository "http://hg.python.org/cpython")
 
 (define (install tynnyri)
-  (with-clang)
   (system
     `(./configure ,(string-append "--prefix=" tynnyri))
     '(make)
