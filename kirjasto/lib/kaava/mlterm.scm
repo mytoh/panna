@@ -9,13 +9,15 @@
   (with-usr-local)
   (system
     `(./configure ,(string-append "--prefix=" prefix)
+                  "--with-gtk=3.0"
                   "--enable-ibus"
                   "--enable-fribidi"
-                  "--with-type-engines=\"xcore,xft,cairo\""
+                  --with-type-engines="xcore,xft,cairo"
                   "--with-imagelib=imlib"
                   "--enable-utmp"
                   "--disable-iiimf"
                   "--disable-kbd"
+                  
                   )
     '(gmake)
     '(gmake install)
