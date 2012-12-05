@@ -7,12 +7,12 @@
 
 (define (install prefix)
   (with-usr-local)
+  (with-clang)
   (system
     `(./configure ,(string-append "--prefix=" prefix)
                   "--with-gtk=3.0"
                   "--enable-ibus"
                   "--enable-fribidi"
-                  "--with-imagelib=imlib"
                   "--enable-utmp"
                   "--disable-iiimf"
                   "--disable-kbd"
