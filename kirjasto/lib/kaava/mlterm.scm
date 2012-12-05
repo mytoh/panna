@@ -17,7 +17,7 @@
                   "--disable-iiimf"
                   "--disable-kbd"
                   )
-    '(gmake)
-    '(gmake install)
-    '(gmake clean)))
+    '(make)
+    '(make install)
+    '(make clean)))
 
