@@ -12,9 +12,10 @@
                   "--enable-ibus"
                   "--enable-fribidi"
                   "--with-type-engines=\"xcore,xft,cairo\""
-                  "--with-imagelib=gdk-pixbuf2"
+                  "--with-imagelib=imlib"
                   "--enable-utmp"
                   "--disable-iiimf"
+                  "--disable-kbd"
                   )
     '(gmake)
     '(gmake install)
