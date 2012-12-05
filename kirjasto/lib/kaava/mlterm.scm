@@ -7,6 +7,7 @@
 
 (define (install prefix)
   (with-usr-local)
+  (with-clang)
   (system
     `(./configure ,(string-append "--prefix=" prefix)
                   "--with-gtk=3.0"
@@ -16,7 +17,6 @@
                   "--enable-utmp"
                   "--disable-iiimf"
                   "--disable-kbd"
-                  
                   )
     '(gmake)
     '(gmake install)
