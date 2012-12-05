@@ -9,7 +9,6 @@
   (with-usr-local)
   (system
     `(./configure ,(string-append "--prefix=" prefix))
-    '(gmake user_doc)
     '(gmake)
     '(gmake install)
     '(gmake clean)))
