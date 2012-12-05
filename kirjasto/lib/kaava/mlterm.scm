@@ -10,7 +10,7 @@
   (with-clang)
   (system
     `(./configure ,(string-append "--prefix=" prefix)
-                  ; "--with-gtk=3.0"
+                  "--with-gtk=3.0"
                   "--enable-ibus"
                   "--enable-fribidi"
                   "--enable-utmp"
