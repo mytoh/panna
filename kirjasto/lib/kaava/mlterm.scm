@@ -8,7 +8,14 @@
 (define (install prefix)
   (with-usr-local)
   (system
-    `(./configure ,(string-append "--prefix=" prefix))
+    `(./configure ,(string-append "--prefix=" prefix)
+                  "--enable-ibus"
+                  "--enable-fribidi"
+                  "--with-type-engines=\"xcore,xft,cairo\""
+                  "--with-imagelib=gdk-pixbuf2"
+                  "--enable-utmp"
+                  "--disable-iiimf"
+                  )
     '(gmake)
     '(gmake install)
     '(gmake clean)))
