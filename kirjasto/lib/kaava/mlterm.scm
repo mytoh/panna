@@ -13,9 +13,9 @@
                   "--with-gtk=3.0"
                   "--enable-ibus"
                   "--enable-fribidi"
-                  "--enable-utmp"
+                  ; "--enable-utmp"
                   "--disable-iiimf"
-                  "--disable-kbd"
+                  ; "--disable-kbd"
                   )
     '(gmake)
     '(gmake install)
