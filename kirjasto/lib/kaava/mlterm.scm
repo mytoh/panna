@@ -13,6 +13,7 @@
                   "--with-gtk=3.0"
                   "--enable-ibus"
                   "--enable-fribidi"
+                  "--enable-sixel"
                   ; "--enable-utmp" ;; it will fail
                   "--disable-iiimf"
                   "--disable-kbd"
