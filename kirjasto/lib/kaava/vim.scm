@@ -18,7 +18,6 @@
                        "--enable-luainterp"
                        "--enable-cscope"
                        "--enable-sniff"
-                       "--enable-"
                        ; "--enable-mzschemeinterp"
                        "--enable-xim"
                        "--enable-fontset"
