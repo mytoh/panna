@@ -15,11 +15,19 @@
                        "--enable-multibyte"
                        "--enable-perlinterp"
                        "--enable-pythoninterp"
+                       "--enable-luainterp"
+                       "--enable-cscope"
+                       "--enable-sniff"
+                       "--enable-"
                        ; "--enable-mzschemeinterp"
                        "--enable-xim"
                        "--enable-fontset"
+
                        "--disable-darwin"
                        "--disable-selinux"
+                       "--disable-netbeans"
+                       "--disable-gpm"
+
                        "--with-x"
                        "--with-features=huge")
        '(gmake)
@@ -45,5 +53,5 @@
        '(make)
        '(make install)
        '(make clean)
-       '(make distclean)) )))
+       '(make distclean)))))
 
