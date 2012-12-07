@@ -11,6 +11,8 @@
   (system
     `(./configure ,(string-append "--prefix=" prefix)
                   "--with-gtk=3.0"
+                  "--with-x"
+                  "--with-tools"
 
                   "--enable-ibus"
                   "--enable-fribidi"
