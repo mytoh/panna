@@ -18,10 +18,9 @@
                   "--enable-fribidi"
                   "--enable-sixel"
                   "--enable-ssh2"
-                  "--enable-pty-helper"
+                  ; "--enable-pty-helper" ;; fail
                   "--enable-uim"
                   "--enable-m17nlib"
-                  "--enable-ibus"
                   "--enable-scim"
                   "--enable-vt52"
                   ; "--enable-utmp" ;; it will fail
