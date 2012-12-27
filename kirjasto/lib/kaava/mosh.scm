@@ -15,8 +15,8 @@
      (system '("./gen-git-build.sh"))
      (system
        `("./configure" ,(string-append "--prefix=" prefix))
-       '(make)
-       '(make install)))
+       '(gmake)
+       '(gmake install)))
     (else
       (system
         '("./gen-git-build.sh")
