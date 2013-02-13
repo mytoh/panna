@@ -8,11 +8,10 @@
 
 (define (install tynnyri)
   (system
-    '("./autogen.sh")
-    `("./configure" "-with-x-toolkit=gtk3" "--without-selinux" "--with-x" "--without-xaw3d" "--without-compress-info" "-with-wide-int" ,(string-append "--prefix=" tynnyri))
-    '(gmake)
-    '(gmake install)
-    '(gmake clean)
-    '(gmake distclean)
-    ))
-
+   '("./autogen.sh")
+   `("./configure" "-with-x-toolkit=gtk3" "--without-selinux" "--with-x" "--without-xaw3d" "--without-compress-info" "-with-wide-int" ,(string-append "--prefix=" tynnyri))
+   '(gmake -j4)
+   '(gmake install)
+   '(gmake clean)
+   '(gmake distclean)
+   ))
